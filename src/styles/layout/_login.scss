@@ -1,0 +1,43 @@
+@use "../abstracts" as abs;
+
+.login{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(to right bottom, abs.$color-purple--light, abs.$color-ebony);
+
+  &-form{
+    padding: 4rem 7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: .5rem;
+    backdrop-filter: brightness(0.75);
+    & input{
+      height: 5rem;
+      width: 100%;
+      border: none;
+      border-radius: .5rem;
+      text-align: center;
+      font-size: 2rem;
+      &:focus{
+        border: none;
+        outline: none;
+        box-shadow: 0 0 .5rem .5rem abs.$color-purple--light;
+      }
+    }
+
+    & span a{
+      font-size: 1.4rem;
+      color: abs.$color-whisper;
+      &:hover{
+        color: abs.$color-monaLisa;
+      }
+    }
+  }
+}

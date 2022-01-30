@@ -1,0 +1,33 @@
+@use "../abstracts" as abs;
+
+.btn{
+  min-width: 20rem;
+  min-height: 3rem;
+  border: none;
+  border-radius: .5rem;
+  padding: 1.5rem 5rem;
+}
+
+.btn-sign-up{
+  font-size: 2rem;
+  color: abs.$color-whisper;
+  background-color: abs.$color-ebony;
+}
+
+.btn-login{
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: abs.$color-whisper;
+  background-color: abs.$color-purple;
+}
+
+.btn-login, .btn-sign-up{
+  background-image: linear-gradient(120deg,transparent 0%, transparent 50%, abs.$color-selago 50%);
+  background-size: 220%;
+  transition: all .4s ease-in-out;
+  &:hover{
+    cursor: pointer;
+    background-position: 100%;
+    color: abs.$color-purple;
+  }
+}
