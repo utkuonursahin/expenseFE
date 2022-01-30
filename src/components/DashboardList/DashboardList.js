@@ -1,5 +1,5 @@
-import {useInvoice} from "../../Context/InvoiceContext";
-const InvoiceList = () => {
+import {useInvoice} from "../../context/ExpensesContext";
+const DashboardList = () => {
   const {invoices} = useInvoice()
   return (
       <ul className="home__invoice-list">
@@ -13,4 +13,4 @@ const InvoiceList = () => {
   );
 };
 
-export default InvoiceList;
+export default DashboardList;

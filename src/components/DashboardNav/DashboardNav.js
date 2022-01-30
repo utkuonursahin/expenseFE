@@ -1,13 +1,12 @@
 import {useEffect, useState} from "react";
 import FilterPopup from "./FilterPopup/FilterPopup";
-import {useInvoice} from "../../Context/InvoiceContext";
-import data from "../../data.json";
+import {useInvoice} from "../../context/ExpensesContext";
 
-const InvoiceNav = () => {
+const DashboardNav = () => {
   const [renderFilterPopup, setRenderFilterPopup] = useState(false)
   const {setInvoices} = useInvoice()
 
-  useEffect(() => !renderFilterPopup && setInvoices(data),[renderFilterPopup])
+  useEffect(() => !renderFilterPopup && setInvoices(),[renderFilterPopup])
 
   return (
       <nav aria-label="secondary navigation" className="home__nav">
@@ -26,4 +25,4 @@ const InvoiceNav = () => {
   );
 };
 
-export default InvoiceNav;
+export default DashboardNav;

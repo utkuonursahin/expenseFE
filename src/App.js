@@ -1,9 +1,9 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Home from "./Pages/Home/Home";
-import Login from "./Pages/Login/Login";
-import SignUp from "./Pages/SignUp/SignUp";
-import Profile from "./Pages/Profile/Profile";
-import Dashboard from "./Pages/Dashboard/Dashboard";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import SignUp from "./pages/SignUp/SignUp";
+import Profile from "./pages/Profile/Profile";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 import './styles/main.scss';
 function App() {

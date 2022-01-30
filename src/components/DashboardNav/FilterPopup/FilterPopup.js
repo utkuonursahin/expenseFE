@@ -1,10 +1,9 @@
-import {useInvoice} from "../../../Context/InvoiceContext";
-import data from "../../../data.json";
+import {useInvoice} from "../../../context/ExpensesContext";
 const FilterPopup = () => {
   const {setInvoices} = useInvoice();
   const handleClick = (e) => {
     if(e.target.tagName !== 'INPUT') return
-    setInvoices(data.filter(el => el.status === e.target.value))
+    setInvoices()
   }
   return (
       <form action="#" className="home__nav--filter" onClick={handleClick}>
