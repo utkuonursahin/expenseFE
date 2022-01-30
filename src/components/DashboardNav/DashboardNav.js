@@ -9,16 +9,21 @@ const DashboardNav = () => {
   useEffect(() => !renderFilterPopup && setInvoices(),[renderFilterPopup])
 
   return (
-      <nav aria-label="secondary navigation" className="home__nav">
-        <h1 className="home__nav--heading heading-1">Invoices</h1>
-        <span className="home__nav--info">There are 6 total invoices</span>
+      <nav aria-label="secondary navigation" className="dashboard__nav">
+        <h3 className="dashboard__nav--heading heading-3">
+          Invoices
+          <span className="dashboard__nav--info">There are 6 total invoices</span>
+        </h3>
+
         <button className="btn btn-filter" onClick={() => setRenderFilterPopup(prev => !prev)}>
           Filter by status
           <img src="/assets/icon-arrow-down.svg" alt="Filter button icon"/>
         </button>
-        <button className="btn btn-new-invoice">
-          <img src="/assets/icon-plus.svg" alt="Icon plus"/>
-          New Invoice
+        <button className="btn btn-add-expense">
+          <div>
+            <img src="/assets/icon-plus.svg" alt="Icon plus"/>
+          </div>
+          <span>Add Expense</span>
         </button>
         {renderFilterPopup && <FilterPopup/>}
       </nav>

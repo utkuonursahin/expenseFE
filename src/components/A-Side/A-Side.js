@@ -1,5 +1,4 @@
 import ThemeButton from "./ThemeButton/ThemeButton";
-import ProfileLink from "./ProfileLink/ProfileLink";
 
 const ASide = () => {
   return (
@@ -8,7 +7,8 @@ const ASide = () => {
           <img src="/assets/logo.svg" alt="Invoice app logo"/>
         </div>
         <ThemeButton/>
-        <ProfileLink/>
+        <span className="aside__horizontal"/>
+        <img src="/assets/image-avatar.jpg" alt="Image avatar" className="aside__profile-link"/>
       </nav>
   );
 };

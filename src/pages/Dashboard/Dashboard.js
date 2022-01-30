@@ -4,9 +4,9 @@ import DashboardNav from "../../components/DashboardNav/DashboardNav";
 import ExpenseForm from "../../components/ExpenseForm/ExpenseForm";
 import {ExpensesProvider} from "../../context/ExpensesContext";
 
-const Home = () => {
+const Dashboard = () => {
   return (
-      <section className="home">
+      <section className="dashboard">
         <ASide/>
         <ExpenseForm/>
         <ExpensesProvider>
@@ -17,4 +17,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Dashboard;
