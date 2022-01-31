@@ -103,8 +103,20 @@
   }
 
   &__list{
+    padding: 0 20vh;
+    width: 100%;
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    &-item{
+      width: 100%;
+      height: 10rem;
+      background-color: abs.$color-mirage;
+      color: abs.$color-whisper;
+      border-radius: 1rem;
+    }
   }
 }

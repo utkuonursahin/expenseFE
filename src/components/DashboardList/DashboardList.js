@@ -1,10 +1,11 @@
-import {useInvoice} from "../../context/ExpensesContext";
 const DashboardList = () => {
 
   return (
       <ul className="dashboard__list">
-        <li>Element 1</li>
-        <li>Element 2</li>
+        <li className="dashboard__list-item">Element 1</li>
+        <li className="dashboard__list-item">Element 2</li>
+        <li className="dashboard__list-item">Element 3</li>
+        <li className="dashboard__list-item">Element 4</li>
       </ul>
   );
 };
