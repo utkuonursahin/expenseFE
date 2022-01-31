@@ -44,3 +44,15 @@ $font-bold:700;
   font-size: 3rem;
   font-weight: $font-bold;
 }
+
+.heading-4{
+  font-size: 2.5rem;
+  color: $color-purple;
+  justify-self: center;
+}
+
+.hidden-form{
+  transform: translateX(-107.5vw);
+  transition: all .5s ease-in-out;
+}
+

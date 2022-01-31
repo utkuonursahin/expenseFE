@@ -1,6 +1,7 @@
 @use "../abstracts" as abs;
 
 .btn{
+  cursor: pointer;
   min-width: 15rem;
   min-height: 3rem;
   border: none;
@@ -37,10 +38,16 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  margin-left: auto;
   font-size: 1.6rem;
   font-weight: 700;
   color: abs.$color-mirage;
   background-color: transparent;
+  //Doesn't work perfect, FIX IT LATER!
+  &:focus img{
+    transform: rotate(-180deg);
+    transition: transform .25s ease-in-out;
+  }
 }
 
 .btn-add-expense{
@@ -68,4 +75,64 @@
       width: 2rem;
     }
   }
+}
+
+.btn-paid{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  background-color: rgba(13, 232, 82, 0.23);
+  color: rgb(69, 217, 115);
+  & span{
+    width: .75rem;
+    height: .75rem;
+    border-radius: .75rem;
+    background-color: rgb(69, 217, 115);
+  }
+}
+
+.btn-pending{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  background-color: rgba(232, 137, 13, 0.23);
+  color: rgb(229, 104, 37);
+  & span{
+    width: .75rem;
+    height: .75rem;
+    border-radius: .75rem;
+    background-color: rgb(229, 104, 37);
+  }
+}
+
+.btn-draft{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  background-color: rgba(47, 47, 47, 0.23);
+  color: rgb(43, 43, 43);
+  & span{
+    width: .75rem;
+    height: .75rem;
+    border-radius: .75rem;
+    background-color: rgb(43, 43, 43);
+  }
+}
+
+.btn-create-expense{
+  height: 5rem;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: abs.$color-whisper;
+  background-color: abs.$color-purple--light;
 }

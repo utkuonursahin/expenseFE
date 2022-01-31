@@ -4,9 +4,9 @@ const ExpensesContext = createContext()
 
 const ExpensesProvider = ({children}) => {
   const [invoices, setInvoices] = useState()
-
-  const values = {invoices, setInvoices}
+  const [isClicked, setIsClicked] = useState(false)
+  const values = {invoices, setInvoices,isClicked, setIsClicked}
   return <ExpensesContext.Provider value={values}>{children}</ExpensesContext.Provider>
 }
-const useInvoice = () => useContext(ExpensesContext)
-export {ExpensesProvider, useInvoice}
+const useExpenses = () => useContext(ExpensesContext)
+export {ExpensesProvider, useExpenses}
