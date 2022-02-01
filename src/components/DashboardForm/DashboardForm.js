@@ -1,40 +1,34 @@
-import {useExpenses} from "../../context/ExpensesContext";
+import { useState } from 'react';
+import { useExpenses } from "../../context/ExpensesContext";
+import Items from './Items/Items';
+import { random } from "../../helper"
 
 const DashboardForm = () => {
-  const {isClicked} = useExpenses()
+  const { isClicked } = useExpenses()
+  const [itemsCount, setItemsCount] = useState([random()]);
   return (
-      <form className={`dashboard__form ${!isClicked && 'hidden-form'}`}>
+      <form className={`dashboard__form ${isClicked ? 'hidden-form' : ""}`}>
         <div className="dashboard__form-details">
           <h4 className="heading-4">Expense Details</h4>
-          <input type="text" placeholder="Title"/>
-          <input type="text" placeholder="Category"/>
-          <textarea placeholder="Description"/>
+          <input type="text" placeholder="Title" />
+          <input type="text" placeholder="Category" />
+          <textarea placeholder="Description" />
         </div>
 
-        <div className="dashboard__form-dates">
-          <h4 className="heading-4 ">Expense Dates</h4>
-          <label htmlFor="payment-date">
-            <span>Payment date</span>
-            <input type="date" placeholder="Payment date" id="payment-date"/>
-          </label>
-          <label htmlFor="payment-due">
-            <span>Payment due</span>
-            <input type="date" placeholder="Payment due" id="payment-due"/>
-          </label>
-          <label htmlFor="expense-date">
-            <span>Expense date</span>
-            <input type="date" placeholder="Expense date" id="expense-date"/>
-          </label>
+        <div className="dashboard__form-date">
+          <h4 className="heading-4 ">Expense Date</h4>
+          <input type="date" placeholder="Expense date" id="expense-date" />
         </div>
 
         <div className="dashboard__form-items">
           <h4 className="heading-4">Expense Items</h4>
-          <input type="text" placeholder="Item name"/>
-          <input type="number" placeholder="Item price"/>
-          <input type="number" placeholder="Item quantity"/>
+          <button type='button' className="btn btn-add-item" onClick={() => setItemsCount(prev => [...prev, random()])}>Add item</button>
+          {itemsCount.map(index => (
+              <Items key={index} index={index} setItemsCount={setItemsCount} />
+          ))}
         </div>
 
-        <button className="btn btn-create-expense">Create Expense</button>
+        <button type='submit' className="btn btn-create-expense">Create Expense</button>
       </form>
   );
 };

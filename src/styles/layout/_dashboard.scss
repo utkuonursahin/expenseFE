@@ -8,7 +8,7 @@
   grid-row-gap: 5rem;
   background-color: abs.$color-vulcan;
   &__aside {
-    z-index: 1;
+    z-index: 2;
     grid-column: aside-start / aside-end;
     grid-row: 1 / -1;
     height: 100%;
@@ -72,6 +72,71 @@
       & span{
         font-size: 1.6rem;
         &:nth-child(3){margin-left: auto;}
+      }
+    }
+  }
+
+  &__form {
+    z-index: 1;
+    overflow-y: scroll;
+    position: absolute;
+    top: 0;
+    left: 12rem;
+    min-width: 50vw;
+    height: 100%;
+    padding: 5rem 2vw;
+    display: grid;
+    grid-template-rows: repeat(4,min-content);
+    gap: 5rem;
+    align-content: center;
+    background-color: abs.$color-vulcan;
+    box-shadow: .25rem 0 2.5rem .25rem #141625;
+    transition: all .5s ease-in-out;
+
+    &-details,&-date,&-items{
+      display: grid;
+      gap: 1rem;
+      & .heading-4{grid-column: 1 / -1;}
+      & input, & textarea{
+        height: 5rem;
+        border-radius: .5rem;
+        font-size: 1.6rem;
+        text-align: center;
+        color: abs.$color-darkblue;
+        background-color: abs.$color-white;
+        border: none;
+        outline: none;
+      }
+    }
+    &-details{
+      grid-template-columns: repeat(2,1fr);
+      grid-template-rows: repeat(3,min-content);
+      & textarea{
+        grid-column: 1 / -1;
+        width: 100%;
+        height: 10rem;
+        resize: none;
+        padding: 3rem 0;
+      }
+    }
+    &-date{grid-template-rows: repeat(2,min-content);}
+    &-items{
+      max-width: 100%;
+      grid-template-rows: repeat(3,min-content);
+      &-item{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3,1fr) min-content;
+        align-items: center;
+        gap: 1rem;
+        & svg{
+          width: 2.5rem;
+          height: 2.5rem;
+          fill: abs.$color-white;
+        }
+        & input{
+          width: 100%;
+        }
       }
     }
   }
