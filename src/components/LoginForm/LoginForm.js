@@ -3,6 +3,7 @@ import { useAuth } from '../../context/AuthContext';
 import { userLogin } from '../../api';
 import { useFormik } from 'formik';
 import validationSchema from "./validations"
+import { toast } from 'react-toastify';
 
 const LoginForm = () => {
   const { login } = useAuth();
@@ -20,36 +21,45 @@ const LoginForm = () => {
         login(user);
         navigate('/dashboard')
       } catch (e) {
+        toast.error(e.response.data.error, {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         bag.setErrors({ general: e.response.data.error })
       }
     }
   })
   return (
+    <>
+      <form onSubmit={formik.handleSubmit} className="login-form">
+        <input
+          name='email'
+          type="email"
+          placeholder="E-mail"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.email}
+          className={`${formik.touched.email && formik.errors.email ? "error" : ""}`}
+        />
 
-    <form onSubmit={formik.handleSubmit} className="login-form">
-      <input
-        name='email'
-        type="email"
-        placeholder="E-mail"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        value={formik.values.email}
-        className={`${formik.touched.email && formik.errors.email ? "error" : ""}`}
-      />
-
-      <input
-        name='password'
-        type="password"
-        placeholder="Password"
-        onBlur={formik.handleBlur}
-        value={formik.values.password}
-        onChange={formik.handleChange}
-        className={`${formik.touched.password && formik.errors.password ? "error" : ""}`}
-      />
-      {formik.errors.general && <div style={{ "background": "orangered", "textAlign": "center", "width": "100%", "padding": "2rem", "color": "white", "fontWeight": "bold", "borderRadius": "1rem" }}>{formik.errors.general}</div>}
-      <button className="btn btn-login" disabled={formik.isSubmitting || !formik.isValid}>Log in</button>
-      <span><Link to="/">go back</Link></span>
-    </form>
+        <input
+          name='password'
+          type="password"
+          placeholder="Password"
+          onBlur={formik.handleBlur}
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          className={`${formik.touched.password && formik.errors.password ? "error" : ""}`}
+        />
+        <button className="btn btn-login" disabled={formik.isSubmitting || !formik.isValid}>Log in</button>
+        <span><Link to="/">go back</Link></span>
+      </form>
+    </>
   )
 
 

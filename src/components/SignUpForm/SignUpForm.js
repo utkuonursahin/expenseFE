@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { createUser } from '../../api';
 import { useFormik } from 'formik';
 import validationSchema from "./validations"
+import { toast } from 'react-toastify';
 
 const SignUpForm = () => {
 
@@ -18,11 +19,39 @@ const SignUpForm = () => {
     onSubmit: async (values, bag) => {
       try {
         await createUser({ email: values.email, password: values.password, full_name: `${values.firstName} ${values.lastName}` });
+        toast.success("you direct login page", {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         navigate('/login')
       } catch (e) {
+
         if (e.response.data.code === 11000) {
+          toast.error("Email already exists", {
+            position: "bottom-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
           bag.setErrors({ general: 'Email already exists' })
         } else {
+          toast.error(e.response.data.error, {
+            position: "bottom-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
           bag.setErrors({ general: e.response.data.error })
         }
       }
@@ -69,7 +98,6 @@ const SignUpForm = () => {
           className={`${formik.touched.confirmPassword && formik.errors.confirmPassword ? "error" : ""}`} />
       </label>
 
-      {formik.errors.general && <div style={{ "background": "orangered", "textAlign": "center", "width": "100%", "padding": "2rem", "color": "white", "fontWeight": "bold", "borderRadius": "1rem" }}>{formik.errors.general}</div>}
       <button className="btn btn-sign-up" disabled={formik.isSubmitting || !formik.isValid}>Sign Up!</button>
       <span><Link to="/">go back</Link></span>
     </form>
