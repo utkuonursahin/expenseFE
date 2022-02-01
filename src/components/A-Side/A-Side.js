@@ -1,14 +1,16 @@
-import ThemeButton from "./ThemeButton/ThemeButton";
-
+import {useState} from 'react'
 const ASide = () => {
+  const [theme, setTheme] = useState(false)
   return (
-      <nav aria-label="primary navigation" className="aside">
-        <div className="aside__logo-container">
-          <img src="/assets/logo.svg" alt="Invoice app logo"/>
-        </div>
-        <ThemeButton/>
-        <span className="aside__horizontal"/>
-        <img src="/assets/image-avatar.jpg" alt="Image avatar" className="aside__profile-link"/>
+      <nav aria-label="primary navigation" className="dashboard__aside">
+        <svg className="dashboard__aside--logo">
+          <use href="./assets/sprite.svg#icon-logo"/>
+        </svg>
+        <svg className="dashboard__aside--theme" onClick={() => setTheme(!theme)}>
+          <use href={`./assets/sprite.svg#icon-icon-${theme ? 'moon' : 'sun'}`}/>
+        </svg>
+        <span className="dashboard__aside--horizontal"/>
+        <img src="./assets/image-avatar.jpg" alt="Image avatar" className="dashboard__aside--profile-link"/>
       </nav>
   );
 };

@@ -1,55 +1,15 @@
 
 $color-purple: #7c5dfa;
 $color-purple--light: #9277ff;
-$color-mirage: #1e2139;
-$color-ebony: #252945;
-$color-selago: #dfe3fa;
-$color-baliHai: #888eb0;
-$color-shipCove: #7e88c3;
+$color-darkblue: #1e2139;
 $color-vulcan: #0c0e16;
-$color-burntSienna: #ec5757;
-$color-monaLisa: #ff9797;
-$color-whisper: #f8f8fb;
-$color-offWhite: #f9fafe;
-$color-mirage2: #141625;
-$color-darkAccent: #494e6e;
-$color-orange: #ff8f00;
-$color-orange--dark: rgba(255, 143, 0, 0.0571);
-$color-otherDark: #373b53;
+$color-red: #ec5757;
+$color-white: #fff;
+$color-white-gray: #ddd;
 
 $font-tiny:400;
 $font-regular:500;
 $font-bold:700;
-
-.heading-1{
-  font-size: 8rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3rem;
-  color: $color-mirage;
-  & span{
-    font-size: 4rem;
-    color: $color-selago;
-  }
-}
-
-.heading-2{
-  font-size: 3.5rem;
-  color: $color-selago;
-  margin-bottom: 5rem;
-}
-
-.heading-3{
-  font-size: 3rem;
-  font-weight: $font-bold;
-}
-
-.heading-4{
-  font-size: 2.5rem;
-  color: $color-purple;
-  justify-self: center;
-}
 
 .hidden-form{
   transform: translateX(-107.5vw);
