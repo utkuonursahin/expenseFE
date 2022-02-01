@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(to right bottom, abs.$color-purple--light, abs.$color-ebony);
+  background-image: linear-gradient(to right bottom, abs.$color-purple--light, abs.$color-vulcan);
 
   &-form{
     padding: 4rem 7rem;
@@ -36,9 +36,9 @@
 
     & span a{
       font-size: 1.4rem;
-      color: abs.$color-whisper;
+      color: abs.$color-white;
       &:hover{
-        color: abs.$color-monaLisa;
+        color: abs.$color-red;
       }
     }
   }

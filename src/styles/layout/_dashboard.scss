@@ -3,225 +3,75 @@
   position: relative;
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 7.5vw 1fr;
+  grid-template-columns: [aside-start] 12rem [aside-end] minmax(5vw,3.5rem) [items-start] 1fr [items-end] minmax(5vw,3.5rem);
   grid-template-rows: min-content 1fr;
-  background-color: abs.$color-offWhite;
-  & .aside{
+  grid-row-gap: 5rem;
+  background-color: abs.$color-vulcan;
+  &__aside {
     z-index: 1;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 7.5vw;
+    grid-column: aside-start / aside-end;
+    grid-row: 1 / -1;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2.5rem;
-    background-color: abs.$color-ebony;
+    gap: 1rem;
+    background-color: abs.$color-darkblue;
     border-radius: 0 3.5rem 3.5rem 0;
-    &__logo-container{
+    &--logo{
       position: relative;
       overflow: hidden;
-      padding: 3rem 0;
       width: 100%;
-      height: min-content;
-      display: flex;
-      align-items: center;
-      border-radius: 0 2.5rem 2.5rem 0;
+      height: 8rem;
+      padding: 2rem 1rem;
+      border-radius: 0 3.5rem 0 0;
       background-color: abs.$color-purple;
-      & img{
-        height: 4rem;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      &::before{
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%;
-        height: 50%;
-        background-color: abs.$color-whisper;
-        opacity: .25;
-        border-radius: 1.5rem 0 1.5rem 0;
-      }
     }
-    &__theme-button{
+    &--theme{
       margin-top: auto;
-      background-color: transparent;
-      border: none;
-      height: 3rem;
-      & img{height: 100%;}
+      height: 5rem;
     }
-    &__horizontal{
-      width: 100%;
-      height: 1px;
-      background-color: abs.$color-baliHai;
-    }
-    &__profile-link{
+    &--profile-link{
+      height: 7.5rem;
+      border-radius: 5rem;
       margin-bottom: 2.5rem;
-      border-radius: 6rem;
-      width: 6rem;
-      height: 6rem;
     }
+
   }
 
   &__nav{
-    position: relative;
-    padding: 10rem 25vh 2.5rem 25vh;
+    grid-column: items-start / items-end;
     width: 100%;
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
     display: flex;
-    align-items: center;
+    gap: 1rem;
     justify-content: center;
-    gap: 2.5rem;
+    align-items: center;
     &--heading{
       display: flex;
       flex-direction: column;
-      & span{
-        color: abs.$color-baliHai;
-        font-size: 1.4rem;
-      }
-    }
-    &--filter{
-      position: absolute;
-      top: 100%;
-      right: 25%;
-      width: min-content;
-      transform: translateX(50%);
-      padding: 3.5rem 6rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      background-color: abs.$color-mirage;
-      color: abs.$color-whisper;
-      border-radius: 1rem;
-      & label{
-        display: flex;
-        align-items: center;
-        gap: 2.5rem;
-        font-size: 1.6rem;
-        cursor: pointer;
-        & input{
-          display: none;
-          &:checked + .checkbox{
-            background: url("../../../public/assets/icon-check.svg"), abs.$color-orange;
-            background-position: center;
-            background-size: 75%;
-            background-repeat: no-repeat;
-          }
-        }
-        & .checkbox{
-          width: 1.5rem;
-          height: 1.5rem;
-          background-color: abs.$color-whisper;
-          border-radius: .25rem;
-          transition: all .15s ease-in-out;
-        }
-      }
+      & span{font-size: 1.3rem;}
     }
   }
 
   &__list{
-    padding: 0 25vh;
+    grid-column: items-start / items-end;
     width: 100%;
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
+    display: grid;
+    grid-template-rows: repeat(6,1fr);
+    gap: 2rem;
     list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
     &-item{
+      padding: 0 2.5rem;
       width: 100%;
-      padding: 2.5rem 3rem;
       display: flex;
-      gap: 5rem;
+      gap: 2.5rem;
       align-items: center;
-      background-color: abs.$color-offWhite;
-      box-shadow: 0 0 1rem .25rem rgba(abs.$color-mirage2,.5);
-      border-radius: .5rem;
-      & span:nth-child(1){
+      color: abs.$color-white;
+      background-color: abs.$color-darkblue;
+      border-radius: 1rem;
+      & span{
         font-size: 1.6rem;
-        font-weight: abs.$font-bold;
-        color: abs.$color-mirage2;
-      }
-      & span:nth-child(2){
-        font-size: 1.5rem;
-        color: abs.$color-baliHai;
-      }
-      & span:nth-child(3){
-        font-size: 1.8rem;
-        color: abs.$color-vulcan;
-      }
-      & span:nth-child(4){
-        margin-left: auto;
-        font-size: 2rem;
-        font-weight: abs.$font-regular;
-        color: abs.$color-mirage;
-      }
-    }
-  }
-
-  &__form{
-    padding: 5rem;
-    position: absolute;
-    top: 0;
-    left: 7.5vw;
-    width: calc(57.5vw - 7.5vw);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 5rem;
-    background-color: abs.$color-offWhite;
-    box-shadow: 1rem 0 .5rem .25rem rgba(abs.$color-mirage,.5);
-    transition: all .5s ease-in-out;
-
-    &-details,&-dates,&-items{
-      display: grid;
-      grid-template-rows: repeat(2,min-content);
-      grid-template-columns: repeat(3,1fr);
-      grid-gap: 2rem;
-      & .heading-4{grid-column: 1 / -1}
-    }
-
-    &-details{
-      grid-template-rows: repeat(3,min-content);
-      grid-template-columns: repeat(2,1fr);
-      & textarea{
-        grid-column: 1 / -1;
-        height: 10rem;
-        resize: none;
-        font-size: 2rem;
-      }
-      & input{
-        height: 5rem;
-        text-align: center;
-        font-size: 2rem;
-      }
-    }
-
-    &-dates{
-      & label{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        font-size: 1.6rem;
-        & input{
-          width: 100%;
-          height: 5rem;
-        }
-      }
-    }
-
-    &-items{
-      align-items: center;
-      & .heading-4{grid-column: 1 / -1}
-      & input{
-        height: 3rem;
-        text-align: center;
-        font-size: 1.6rem;
+        &:nth-child(3){margin-left: auto;}
       }
     }
   }
