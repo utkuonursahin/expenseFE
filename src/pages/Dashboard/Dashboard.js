@@ -1,8 +1,9 @@
 import ASide from "../../components/A-Side/A-Side";
-import DashboardList from "../../components/DashboardList/DashboardList";
-import DashboardNav from "../../components/DashboardNav/DashboardNav";
-import DashboardForm from "../../components/DashboardForm/DashboardForm";
 import {ExpensesProvider} from "../../context/ExpensesContext";
+import DashboardNav from "../../components/DashboardNav/DashboardNav";
+import DashboardList from "../../components/DashboardList/DashboardList";
+import DashboardForm from "../../components/DashboardForm/DashboardForm";
+import Overlay from "../../components/Overlay/Overlay";
 
 const Dashboard = () => {
   return (
@@ -12,6 +13,7 @@ const Dashboard = () => {
           <DashboardNav/>
           <DashboardList/>
           <DashboardForm/>
+          <Overlay/>
         </ExpensesProvider>
       </section>
   );

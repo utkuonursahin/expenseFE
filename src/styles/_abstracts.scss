@@ -11,8 +11,28 @@ $font-tiny:400;
 $font-regular:500;
 $font-bold:700;
 
+$bp-largest:40.625em; //650px
+$bp-large:37.5em; //600px
+$bp-medium:31.25em; //500px
+$bp-small: 26.25em; //420px
+
 .hidden-form{
   transform: translateX(-107.5vw);
   transition: all .5s ease-in-out;
+  @media only screen and (max-width: $bp-large){
+    transform: translate(0,calc(-100% - 10rem));
+  }
+}
+
+.hidden{display: none;}
+
+.overlay{
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba($color-vulcan,.75);
 }
 

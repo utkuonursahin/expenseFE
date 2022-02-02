@@ -1,31 +1,33 @@
 import { useState } from 'react';
 import { useExpenses } from "../../context/ExpensesContext";
-import Items from './Items/Items';
 import { random } from "../../helper"
+import Items from './Items/Items';
 
 const DashboardForm = () => {
-  const { isClicked } = useExpenses()
+  const { isClicked, setIsClicked } = useExpenses()
   const [itemsCount, setItemsCount] = useState([random()]);
+  const handleSubmit = e => {
+    e.preventDefault()
+    setIsClicked(!isClicked)
+  }
   return (
-      <form className={`dashboard__form ${isClicked ? 'hidden-form' : ""}`}>
+      <form className={`dashboard__form ${!isClicked ? 'hidden-form' : ""}`} onSubmit={handleSubmit}>
         <div className="dashboard__form-details">
-          <h4 className="heading-4">Expense Details</h4>
+          <h4 className="heading-4" >Expense Details</h4>
           <input type="text" placeholder="Title" />
           <input type="text" placeholder="Category" />
-          <textarea placeholder="Description" />
+          <textarea placeholder="Description"/>
         </div>
 
         <div className="dashboard__form-date">
-          <h4 className="heading-4 ">Expense Date</h4>
+          <h4 className="heading-4">Expense Date</h4>
           <input type="date" placeholder="Expense date" id="expense-date" />
         </div>
 
         <div className="dashboard__form-items">
           <h4 className="heading-4">Expense Items</h4>
           <button type='button' className="btn btn-add-item" onClick={() => setItemsCount(prev => [...prev, random()])}>Add item</button>
-          {itemsCount.map(index => (
-              <Items key={index} index={index} setItemsCount={setItemsCount} />
-          ))}
+          {itemsCount.map(index => (<Items key={index} index={index} setItemsCount={setItemsCount} />))}
         </div>
 
         <button type='submit' className="btn btn-create-expense">Create Expense</button>
