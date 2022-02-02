@@ -5,8 +5,6 @@ import SignUp from "./pages/SignUp/SignUp";
 import Profile from "./pages/Profile/Profile";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ProtectedRoute from "./pages/ProtectedRoute"
-import 'react-toastify/dist/ReactToastify.css';
-import './styles/main.scss';
 import { ToastContainer } from 'react-toastify';
 
 function App() {
