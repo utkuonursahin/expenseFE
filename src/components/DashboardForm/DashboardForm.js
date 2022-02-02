@@ -27,7 +27,9 @@ const DashboardForm = () => {
         <div className="dashboard__form-items">
           <h4 className="heading-4">Expense Items</h4>
           <button type='button' className="btn btn-add-item" onClick={() => setItemsCount(prev => [...prev, random()])}>Add item</button>
-          {itemsCount.map(index => (<Items key={index} index={index} setItemsCount={setItemsCount} />))}
+          <div className="dashboard__form-items-container">
+            {itemsCount.map(index => (<Items key={index} index={index} setItemsCount={setItemsCount} />))}
+          </div>
         </div>
 
         <button type='submit' className="btn btn-create-expense">Create Expense</button>
