@@ -5,10 +5,14 @@
   display: grid;
   grid-template-columns: [aside-start] 12rem [aside-end] minmax(5vw,3.5rem) [items-start] 1fr [items-end] minmax(5vw,3.5rem);
   grid-template-rows: min-content 1fr;
-  grid-row-gap: 5rem;
+  grid-row-gap: 2.5rem;
   background-color: abs.$color-vulcan;
+  @media only screen and(max-width: abs.$bp-large){
+    grid-template-columns: 1fr;
+    grid-template-rows: [aside-start] 10rem [aside-end nav-start] min-content [nav-end list-start] 1fr [list-end];
+  }
   &__aside {
-    z-index: 1;
+    z-index:3;
     grid-column: aside-start / aside-end;
     grid-row: 1 / -1;
     height: 100%;
@@ -18,6 +22,13 @@
     gap: 1rem;
     background-color: abs.$color-darkblue;
     border-radius: 0 3.5rem 3.5rem 0;
+    @media only screen and (max-width: abs.$bp-large){
+      grid-column: 1 / -1;
+      grid-row: aside-start / aside-end;
+      width: 100%;
+      flex-direction: row;
+      border-radius: 0 0 3.5rem 3.5rem;
+    }
     &--logo{
       position: relative;
       overflow: hidden;
@@ -26,15 +37,30 @@
       padding: 2rem 1rem;
       border-radius: 0 3.5rem 0 0;
       background-color: abs.$color-purple;
+      @media only screen and (max-width: abs.$bp-large){
+        height: 100%;
+        width: 8rem;
+        border-radius: 0 0 0 3.5rem;
+      }
     }
     &--theme{
       margin-top: auto;
       height: 5rem;
+      @media only screen and (max-width: abs.$bp-large){
+        margin-top: 0;
+        margin-left: auto;
+        width: 3.5rem;
+      }
     }
     &--profile-link{
       height: 7.5rem;
       border-radius: 5rem;
       margin-bottom: 2.5rem;
+      @media only screen and (max-width: abs.$bp-large){
+        margin-bottom: 0;
+        height: 5rem;
+        margin-right: 2.5rem;
+      }
     }
 
   }
@@ -42,14 +68,77 @@
   &__nav{
     grid-column: items-start / items-end;
     width: 100%;
+    margin-top: 5rem;
+    height: 10vh;
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     justify-content: center;
     align-items: center;
+    @media only screen and (max-width: abs.$bp-large){
+      grid-column: 1 / -1;
+      grid-row: nav-start / nav-end;
+      margin-top: 0;
+      padding: 0 2.5rem;
+    }
+    @media only screen and (max-width: abs.$bp-small){
+      display: grid;
+      grid-template-rows: repeat(2,min-content);
+      grid-template-columns: repeat(2,1fr);
+      height: 100%;
+    }
     &--heading{
       display: flex;
       flex-direction: column;
+      @media only screen and (max-width: abs.$bp-small){
+        grid-column: 1 / -1;
+        justify-self: center;
+        text-align: center;
+      }
       & span{font-size: 1.3rem;}
+    }
+    &--filter{
+      position: relative;
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      &-form{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 2rem 5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+        border-radius: .5rem;
+        background-color: abs.$color-vulcan;
+        box-shadow: 0 0 .5rem .1rem abs.$color-purple--light;
+        & label{
+          cursor: pointer;
+          width: 100%;
+          display: flex;
+          gap: 1rem;
+          font-size: 1.4rem;
+          color: abs.$color-white-gray;
+          &:hover .checkbox{background-color: abs.$color-darkblue}
+          & input{
+            display: none;
+            &:checked + .checkbox{
+              background: url("../../../public/assets/icon-check.svg"), abs.$color-darkblue;
+              background-position: center;
+              background-size: 75%;
+              background-repeat: no-repeat;
+            }
+          }
+          & .checkbox{
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: .5rem;
+            background-color: abs.$color-purple--light;
+          }
+        }
+      }
+      &:focus-within .btn-categories svg{transform: rotate(180deg);}
     }
   }
 
@@ -60,18 +149,122 @@
     grid-template-rows: repeat(6,1fr);
     gap: 2rem;
     list-style: none;
-    &-item{
+    @media only screen and (max-width: abs.$bp-large){
+      grid-column: 1 / -1;
+      grid-row: list-start / list-end;
+      grid-template-rows: repeat(auto-fit,minmax(7rem,10rem));
       padding: 0 2.5rem;
+    }
+    @media only screen and (max-width: abs.$bp-small){padding: 0 1rem;}
+    &-item{
+      padding: 0 2rem;
       width: 100%;
-      display: flex;
-      gap: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(5,1fr);
       align-items: center;
+      justify-items: center;
       color: abs.$color-white;
       background-color: abs.$color-darkblue;
       border-radius: 1rem;
+      @media only screen and (max-width: abs.$bp-large){padding: 1rem;}
+      @media only screen and (max-width: abs.$bp-medium){
+        grid-template-columns: repeat(2,1fr) repeat(2,min-content);
+        grid-template-rows: repeat(2,min-content);
+        grid-gap: 1rem;
+        align-content: center;
+        padding: 0 1rem;
+      }
       & span{
         font-size: 1.6rem;
-        &:nth-child(3){margin-left: auto;}
+        @media only screen and(max-width: abs.$bp-largest){font-size: 1.3rem}
+        @media only screen and (max-width: abs.$bp-small){font-size: 1.1rem;}
+      }
+    }
+  }
+
+  &__form {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 12rem;
+    min-width: 50vw;
+    padding: 2.5rem 2vw;
+    display: grid;
+    grid-template-rows: repeat(4,min-content);
+    gap: 5rem;
+    background-color: abs.$color-vulcan;
+    box-shadow: .25rem 0 2.5rem .25rem #141625;
+    transition: all .5s ease-in-out;
+
+    &, &-items-container{
+      height: 100%;
+      overflow-y: auto;
+      &::-webkit-scrollbar {width: .75rem;}
+      &::-webkit-scrollbar-track {background: abs.$color-darkblue;  border-radius: 1rem;}
+      &::-webkit-scrollbar-thumb {background: abs.$color-purple--light; border-radius: 1rem;}
+      &::-webkit-scrollbar-thumb:hover {background: abs.$color-white-gray;}
+    }
+
+    @media only screen and (max-width: abs.$bp-large){
+      top: 10rem;
+      left: 0;
+      width: 100%;
+      gap: 2.5rem;
+      padding: 1.5rem 2rem;
+    }
+
+    &-details,&-date,&-items{
+      display: grid;
+      gap: 1rem;
+      & .heading-4{grid-column: 1 / -1;}
+      & input, & textarea{
+        height: 5rem;
+        width: 100%;
+        border-radius: .5rem;
+        font-size: 1.6rem;
+        text-align: center;
+        color: abs.$color-darkblue;
+        background-color: abs.$color-white;
+        border: none;
+        outline: none;
+      }
+    }
+    &-details{
+      grid-template-columns: repeat(2,1fr);
+      grid-template-rows: repeat(3,min-content);
+      @media only screen and (max-width: abs.$bp-large){
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3,min-content);
+      }
+      & textarea{
+        grid-column: 1 / -1;
+        width: 100%;
+        height: 10rem;
+        resize: none;
+        padding: 3rem 0;
+      }
+    }
+    &-date{grid-template-rows: repeat(2,min-content);}
+    &-items{
+      grid-template-rows: repeat(2,min-content) 12.5rem;
+      &-container{
+        padding: 0 .5rem;
+        display: grid;
+        grid-auto-rows: 5rem;
+        gap: 1rem;
+        &-item{
+          width: 100%;
+          display: grid;
+          grid-template-columns: repeat(3,1fr) min-content;
+          align-items: center;
+          gap: 1rem;
+          & svg{
+            cursor: pointer;
+            width: 2.5rem;
+            height: 2.5rem;
+            fill: abs.$color-white;
+          }
+        }
       }
     }
   }

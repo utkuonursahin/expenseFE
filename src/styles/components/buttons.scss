@@ -37,26 +37,32 @@
 .btn-categories{
   display: flex;
   align-items: center;
+  height: 5rem;
   gap: 1rem;
-  margin-left: auto;
   font-size: 1.6rem;
   font-weight: 700;
   color: abs.$color-purple--light;
   background-color: transparent;
+  @media only screen and(max-width: abs.$bp-largest){font-size: 1.4rem}
   & svg{
     width: 2rem;
     height: 100%;
     fill: abs.$color-purple;
+    transition: transform .25s ease-in-out;
   }
 }
 
-.btn-create-expense{
+.btn-create-expense, .btn-add-item{
   height: 5rem;
   font-size: 1.6rem;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: abs.$color-white;
   background-color: abs.$color-purple--light;
+  @media only screen and (max-width: abs.$bp-large){
+    font-size: 1.4rem;
+    height: 4rem;
+  }
 }
 
 .btn-add-expense{
@@ -70,10 +76,26 @@
   background-color: abs.$color-purple;
   color: abs.$color-white;
   font-size: 1.6rem;
+  @media only screen and(max-width: abs.$bp-largest){font-size: 1.4rem; padding: 0 .5rem;}
   & svg{
-    z-index: 1;
     width: 3.5rem;
     height: 3.5rem;
     fill: abs.$color-white;
+    @media only screen and(max-width: abs.$bp-largest){height: 2.5rem; width: 2.5rem;}
+  }
+}
+
+.btn-show-more{
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  letter-spacing: 1.3px;
+  color: abs.$color-purple--light;
+  background-color: abs.$color-vulcan;
+  &:hover{box-shadow: 0 0 .5rem .15rem abs.$color-purple--light;}
+  &:active{transform: translateY(.2rem)}
+  @media only screen and (max-width: abs.$bp-medium){
+    grid-row: 2 / 3;
+    grid-column: 1 / -1;
+    width: 100%;
   }
 }
