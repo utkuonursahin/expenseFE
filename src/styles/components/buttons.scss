@@ -1,28 +1,30 @@
 @use "../abstracts" as abs;
 
 .btn{
-  min-width: 15rem;
-  min-height: 3rem;
+  cursor: pointer;
   border: none;
-  border-radius: .5rem;
+  border-radius: .5rem;  
+  &:disabled {
+    opacity: .2;
+  }
 }
 
 .btn-sign-up{
   font-size: 2rem;
-  color: abs.$color-whisper;
-  background-color: abs.$color-ebony;
+  color: abs.$color-white;
+  background-color: abs.$color-vulcan;
 }
 
 .btn-login{
   font-size: 1.8rem;
   font-weight: 500;
-  color: abs.$color-whisper;
+  color: abs.$color-white;
   background-color: abs.$color-purple;
 }
 
 .btn-login, .btn-sign-up{
   padding: 1.5rem 5rem;
-  background-image: linear-gradient(120deg,transparent 0%, transparent 50%, abs.$color-selago 50%);
+  background-image: linear-gradient(120deg,transparent 0%, transparent 50%, abs.$color-white-gray 50%);
   background-size: 220%;
   transition: all .4s ease-in-out;
   &:hover{
@@ -32,40 +34,68 @@
   }
 }
 
-.btn-filter{
-  height: 5rem;
+.btn-categories{
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: abs.$color-mirage;
-  background-color: transparent;
-}
-
-.btn-add-expense{
-  padding-right: 1rem;
   height: 5rem;
-  display: flex;
-  align-items: center;
   gap: 1rem;
   font-size: 1.6rem;
   font-weight: 700;
-  background-color: abs.$color-purple;
-  color: abs.$color-whisper;
-  border-radius: 5rem;
-  & div{
-    margin-left: .5rem;
+  color: abs.$color-purple--light;
+  background-color: transparent;
+  @media only screen and(max-width: abs.$bp-largest){font-size: 1.4rem}
+  & svg{
+    width: 2rem;
+    height: 100%;
+    fill: abs.$color-purple;
+    transition: transform .25s ease-in-out;
+  }
+}
+
+.btn-create-expense, .btn-add-item{
+  height: 5rem;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: abs.$color-white;
+  background-color: abs.$color-purple--light;
+  @media only screen and (max-width: abs.$bp-large){
+    font-size: 1.4rem;
     height: 4rem;
-    width: 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 4rem;
-    background-color: abs.$color-whisper;
-    & img{
-      height: 2rem;
-      width: 2rem;
-    }
+  }
+}
+
+.btn-add-expense{
+  position: relative;
+  max-width: 15rem;
+  height: 5rem;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: abs.$color-purple;
+  color: abs.$color-white;
+  font-size: 1.6rem;
+  @media only screen and(max-width: abs.$bp-largest){font-size: 1.4rem; padding: 0 .5rem;}
+  & svg{
+    width: 3.5rem;
+    height: 3.5rem;
+    fill: abs.$color-white;
+    @media only screen and(max-width: abs.$bp-largest){height: 2.5rem; width: 2.5rem;}
+  }
+}
+
+.btn-show-more{
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  letter-spacing: 1.3px;
+  color: abs.$color-purple--light;
+  background-color: abs.$color-vulcan;
+  &:hover{box-shadow: 0 0 .5rem .15rem abs.$color-purple--light;}
+  &:active{transform: translateY(.2rem)}
+  @media only screen and (max-width: abs.$bp-medium){
+    grid-row: 2 / 3;
+    grid-column: 1 / -1;
+    width: 100%;
   }
 }

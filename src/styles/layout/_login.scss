@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(to right bottom, abs.$color-purple--light, abs.$color-ebony);
+  background-image: linear-gradient(to right bottom, abs.$color-purple--light, abs.$color-vulcan);
 
   &-form{
     padding: 4rem 7rem;
@@ -18,7 +18,7 @@
     justify-content: center;
     border-radius: .5rem;
     backdrop-filter: brightness(0.75);
-    & input{
+    input{
       height: 5rem;
       width: 100%;
       border: none;
@@ -26,17 +26,19 @@
       text-align: center;
       font-size: 2rem;
       &:focus{
-        border: none;
         outline: none;
         box-shadow: 0 0 .5rem .5rem abs.$color-purple--light;
+      }
+      &.error {
+        border: 3px solid red;
       }
     }
 
     & span a{
       font-size: 1.4rem;
-      color: abs.$color-whisper;
+      color: abs.$color-white;
       &:hover{
-        color: abs.$color-monaLisa;
+        color: abs.$color-red;
       }
     }
   }

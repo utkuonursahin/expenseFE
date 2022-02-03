@@ -1,12 +1,29 @@
-import {createContext, useContext, useState} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { getUserExpenses } from '../api';
 
 const ExpensesContext = createContext()
 
-const ExpensesProvider = ({children}) => {
-  const [invoices, setInvoices] = useState()
+const ExpensesProvider = ({ children }) => {
+  const [expenses, setExpenses] = useState([])
+  const [isClicked, setIsClicked] = useState(false)
 
-  const values = {invoices, setInvoices}
+  useEffect(() => {
+    refreshExpenses()
+  }, [])
+
+  const refreshExpenses = async () => {
+    if (localStorage.getItem("user")) {
+      try {
+        const fetchExpenses = await getUserExpenses();
+        setExpenses(fetchExpenses)
+      } catch (e) {
+        console.log(e.response.data);
+      }
+    }
+  }
+
+  const values = { expenses, setExpenses, isClicked, setIsClicked, refreshExpenses }
   return <ExpensesContext.Provider value={values}>{children}</ExpensesContext.Provider>
 }
-const useInvoice = () => useContext(ExpensesContext)
-export {ExpensesProvider, useInvoice}
+const useExpenses = () => useContext(ExpensesContext)
+export { ExpensesProvider, useExpenses }
