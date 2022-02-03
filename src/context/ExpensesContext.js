@@ -8,19 +8,21 @@ const ExpensesProvider = ({ children }) => {
   const [isClicked, setIsClicked] = useState(false)
 
   useEffect(() => {
-    (async () => {
-      if (localStorage.getItem("user")) {
-        try {
-          const fetchExpenses = await getUserExpenses();
-          setExpenses(fetchExpenses)
-        } catch (e) {
-          console.log(e.response.data);
-        }
-      }
-    })()
+    refreshExpenses()
   }, [])
 
-  const values = { expenses, setExpenses, isClicked, setIsClicked }
+  const refreshExpenses = async () => {
+    if (localStorage.getItem("user")) {
+      try {
+        const fetchExpenses = await getUserExpenses();
+        setExpenses(fetchExpenses)
+      } catch (e) {
+        console.log(e.response.data);
+      }
+    }
+  }
+
+  const values = { expenses, setExpenses, isClicked, setIsClicked, refreshExpenses }
   return <ExpensesContext.Provider value={values}>{children}</ExpensesContext.Provider>
 }
 const useExpenses = () => useContext(ExpensesContext)

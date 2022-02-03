@@ -5,9 +5,10 @@ const DashboardList = () => {
   const { expenses } = useExpenses()
 
   const totalPrice = (items) => {
-    return items.reduce((acc, item) => {
+    const totalPrice = items.reduce((acc, item) => {
       return acc + (item.price * item.quantity);
     }, 0)
+    return parseInt(totalPrice).toLocaleString('tr-TR', { style: 'currency', currency: items[0].currency });
   }
 
   return (

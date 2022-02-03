@@ -9,7 +9,7 @@ import moment from 'moment';
 import validationSchema from "./validations";
 
 const DashboardForm = () => {
-  const { isClicked, setIsClicked } = useExpenses()
+  const { isClicked, setIsClicked, refreshExpenses } = useExpenses()
   const [items, setItems] = useState([random()]);
 
   const formik = useFormik({
@@ -21,7 +21,8 @@ const DashboardForm = () => {
       items: [{
         name: "",
         price: "",
-        quantity: ""
+        quantity: "",
+        currency: "TRY"
       }]
     },
     validationSchema,
@@ -29,6 +30,7 @@ const DashboardForm = () => {
       try {
         console.log(values);
         await createExpense(values);
+        await refreshExpenses();
         setIsClicked(!isClicked)
         toast.success('Expense created successfully', {
           position: "bottom-right",
@@ -54,7 +56,6 @@ const DashboardForm = () => {
       }
     }
   })
-  console.log(formik.errors)
   return (
     <form className={`dashboard__form ${!isClicked ? 'hidden-form' : ""}`} onSubmit={formik.handleSubmit}>
       <div className="dashboard__form-details">
