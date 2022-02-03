@@ -7,9 +7,14 @@
   grid-template-rows: min-content 1fr;
   grid-row-gap: 2.5rem;
   background-color: abs.$color-vulcan;
+  overflow-y: auto;
+  &::-webkit-scrollbar {width: .75rem;}
+  &::-webkit-scrollbar-track {background: abs.$color-darkblue;  border-radius: 1rem;}
+  &::-webkit-scrollbar-thumb {background: abs.$color-purple--light; border-radius: 1rem;}
+  &::-webkit-scrollbar-thumb:hover {background: abs.$color-white-gray;}
   @media only screen and(max-width: abs.$bp-large){
     grid-template-columns: 1fr;
-    grid-template-rows: [aside-start] 10rem [aside-end nav-start] min-content [nav-end list-start] 1fr [list-end];
+    grid-template-rows: [aside-start] 7rem [aside-end nav-start] min-content [nav-end list-start] 1fr [list-end];
   }
   &__aside {
     z-index:3;
@@ -43,26 +48,15 @@
         border-radius: 0 0 0 3.5rem;
       }
     }
-    &--theme{
-      margin-top: auto;
-      height: 5rem;
-      @media only screen and (max-width: abs.$bp-large){
-        margin-top: 0;
-        margin-left: auto;
-        width: 3.5rem;
-      }
-    }
     &--profile-link{
-      height: 7.5rem;
+      height: 6rem;
+      margin: auto 0 2.5rem 0;
       border-radius: 5rem;
-      margin-bottom: 2.5rem;
       @media only screen and (max-width: abs.$bp-large){
-        margin-bottom: 0;
-        height: 5rem;
-        margin-right: 2.5rem;
+        height: 4rem;
+        margin: 0 2.5rem 0 auto;
       }
     }
-
   }
 
   &__nav{
@@ -101,43 +95,6 @@
       margin-left: auto;
       display: flex;
       align-items: center;
-      &-form{
-        position: absolute;
-        top: 100%;
-        left: 0;
-        padding: 2rem 5rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2.5rem;
-        border-radius: .5rem;
-        background-color: abs.$color-vulcan;
-        box-shadow: 0 0 .5rem .1rem abs.$color-purple--light;
-        & label{
-          cursor: pointer;
-          width: 100%;
-          display: flex;
-          gap: 1rem;
-          font-size: 1.4rem;
-          color: abs.$color-white-gray;
-          &:hover .checkbox{background-color: abs.$color-darkblue}
-          & input{
-            display: none;
-            &:checked + .checkbox{
-              background: url("../../../public/assets/icon-check.svg"), abs.$color-darkblue;
-              background-position: center;
-              background-size: 75%;
-              background-repeat: no-repeat;
-            }
-          }
-          & .checkbox{
-            width: 1.5rem;
-            height: 1.5rem;
-            border-radius: .5rem;
-            background-color: abs.$color-purple--light;
-          }
-        }
-      }
       &:focus-within .btn-categories svg{transform: rotate(180deg);}
     }
   }
@@ -174,10 +131,23 @@
         align-content: center;
         padding: 0 1rem;
       }
+      & .dashboard__list-item-category{
+        @media only screen and (max-width: abs.$bp-small){display: none}
+      }
+
       & span{
+        width: 100%;
+        text-align: center;
         font-size: 1.6rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-transform: capitalize;
         @media only screen and(max-width: abs.$bp-largest){font-size: 1.3rem}
-        @media only screen and (max-width: abs.$bp-small){font-size: 1.1rem;}
+        &:not(:first-child){
+          border-left: .2rem solid abs.$color-purple--light;
+          @media only screen and(max-width: abs.$bp-largest){border-left: none}
+        }
       }
     }
   }
@@ -196,17 +166,8 @@
     box-shadow: .25rem 0 2.5rem .25rem #141625;
     transition: all .5s ease-in-out;
 
-    &, &-items-container{
-      height: 100%;
-      overflow-y: auto;
-      &::-webkit-scrollbar {width: .75rem;}
-      &::-webkit-scrollbar-track {background: abs.$color-darkblue;  border-radius: 1rem;}
-      &::-webkit-scrollbar-thumb {background: abs.$color-purple--light; border-radius: 1rem;}
-      &::-webkit-scrollbar-thumb:hover {background: abs.$color-white-gray;}
-    }
-
     @media only screen and (max-width: abs.$bp-large){
-      top: 10rem;
+      top: 7rem;
       left: 0;
       width: 100%;
       gap: 2.5rem;
@@ -217,9 +178,8 @@
       display: grid;
       gap: 1rem;
       & .heading-4{grid-column: 1 / -1;}
-      & input, & textarea{
+      & input, textarea, select{
         height: 5rem;
-        width: 100%;
         border-radius: .5rem;
         font-size: 1.6rem;
         text-align: center;
@@ -228,13 +188,31 @@
         border: none;
         outline: none;
       }
+      & input{width: 100%}
     }
     &-details{
-      grid-template-columns: repeat(2,1fr);
+      grid-template-columns: repeat(2,1fr) min-content;
       grid-template-rows: repeat(3,min-content);
       @media only screen and (max-width: abs.$bp-large){
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(3,min-content);
+        grid-template-rows: repeat(5,min-content);
+      }
+
+      &-select{
+        grid-column: 3 / 4;
+        grid-row: 2 / 3;
+        width: 7rem;
+        appearance: none;
+        justify-self: center;
+        @media only screen and (max-width: abs.$bp-large){
+          grid-row: 5 / 6;
+          grid-column: 1 / -1;
+          width: 100%;
+        }
+        & option{
+          background-color: abs.$color-darkblue;
+          color: abs.$color-white-gray;
+        }
       }
       & textarea{
         grid-column: 1 / -1;
@@ -244,7 +222,9 @@
         padding: 3rem 0;
       }
     }
+
     &-date{grid-template-rows: repeat(2,min-content);}
+
     &-items{
       grid-template-rows: repeat(2,min-content) 12.5rem;
       &-container{
@@ -252,10 +232,16 @@
         display: grid;
         grid-auto-rows: 5rem;
         gap: 1rem;
+        height: 100%;
+        overflow-y: auto;
+        &::-webkit-scrollbar {width: .75rem;}
+        &::-webkit-scrollbar-track {background: abs.$color-darkblue;  border-radius: 1rem;}
+        &::-webkit-scrollbar-thumb {background: abs.$color-purple--light; border-radius: 1rem;}
+        &::-webkit-scrollbar-thumb:hover {background: abs.$color-white-gray;}
         &-item{
           width: 100%;
           display: grid;
-          grid-template-columns: repeat(3,1fr) min-content;
+          grid-template-columns: 1fr 20% 15% min-content;
           align-items: center;
           gap: 1rem;
           & svg{

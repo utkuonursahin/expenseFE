@@ -5,7 +5,8 @@ const ExpensesContext = createContext()
 
 const ExpensesProvider = ({ children }) => {
   const [expenses, setExpenses] = useState([])
-  const [isClicked, setIsClicked] = useState(false)
+  const [isFormClicked, setIsFormClicked] = useState(false)
+  const [isDetailsClicked, setIsDetailsClicked] = useState(false)
 
   useEffect(() => {
     refreshExpenses()
@@ -22,7 +23,7 @@ const ExpensesProvider = ({ children }) => {
     }
   }
 
-  const values = { expenses, setExpenses, isClicked, setIsClicked, refreshExpenses }
+  const values = { expenses, setExpenses, isFormClicked, setIsFormClicked, isDetailsClicked, setIsDetailsClicked, refreshExpenses }
   return <ExpensesContext.Provider value={values}>{children}</ExpensesContext.Provider>
 }
 const useExpenses = () => useContext(ExpensesContext)

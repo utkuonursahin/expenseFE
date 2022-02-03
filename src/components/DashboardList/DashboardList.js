@@ -2,7 +2,7 @@ import moment from 'moment';
 import { useExpenses } from '../../context/ExpensesContext';
 
 const DashboardList = () => {
-  const { expenses } = useExpenses()
+  const { expenses, setIsDetailsClicked } = useExpenses()
 
   const totalPrice = (items) => {
     const totalPrice = items.reduce((acc, item) => {
@@ -17,9 +17,9 @@ const DashboardList = () => {
         <li key={expense._id} className="dashboard__list-item">
           <span>{moment(expense.expense_date).format('ll')}</span>
           <span>{expense.title}</span>
-          <span>{expense.category.title}</span>
+          <span className="dashboard__list-item-category" >{expense.category.title}</span>
           <span>{totalPrice(expense.items)}</span>
-          <button className="btn btn-show-more">Show more</button>
+          <button className="btn btn-show-more" onClick={() => setIsDetailsClicked(prev => !prev)}>Show more</button>
         </li>
       ))}
     </ul>

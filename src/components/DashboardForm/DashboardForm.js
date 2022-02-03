@@ -9,7 +9,7 @@ import moment from 'moment';
 import validationSchema from "./validations";
 
 const DashboardForm = () => {
-  const { isClicked, setIsClicked, refreshExpenses } = useExpenses()
+  const { isFormClicked, setIsFormClicked, refreshExpenses } = useExpenses()
   const [items, setItems] = useState([random()]);
 
   const formik = useFormik({
@@ -31,7 +31,7 @@ const DashboardForm = () => {
         console.log(values);
         await createExpense(values);
         await refreshExpenses();
-        setIsClicked(!isClicked)
+        setIsFormClicked(!isFormClicked)
         toast.success('Expense created successfully', {
           position: "bottom-right",
           autoClose: 3000,
@@ -57,7 +57,7 @@ const DashboardForm = () => {
     }
   })
   return (
-    <form className={`dashboard__form ${!isClicked ? 'hidden-form' : ""}`} onSubmit={formik.handleSubmit}>
+    <form className={`dashboard__form ${!isFormClicked ? 'hidden-form' : ""}`} onSubmit={formik.handleSubmit}>
       <div className="dashboard__form-details">
         <h4 className="heading-4" >Expense Details</h4>
         <input
@@ -66,7 +66,8 @@ const DashboardForm = () => {
           placeholder="Title"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.title} />
+          value={formik.values.title}
+          className={`${formik.touched.title && formik.errors.title ? "error" : ""}`}/>
 
         <input
           name='category'
@@ -76,12 +77,21 @@ const DashboardForm = () => {
           onBlur={formik.handleBlur}
           value={formik.values.category}
         />
+
         <textarea
           name='description'
           placeholder="Description"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.description} />
+
+        <select className="dashboard__form-details-select">
+          <option value="USD">USD ($)</option>
+          <option value="EUR">EUR (€)</option>
+          <option value="GBP">GBP (£)</option>
+          <option value="TRY">TRY (₺)</option>
+        </select>
+
       </div>
 
       <div className="dashboard__form-date">
@@ -107,7 +117,7 @@ const DashboardForm = () => {
 
       <div className="dashboard__form-buttons">
         <button type='submit' className="btn btn-create-expense">Create Expense</button>
-        <button type='submit' className="btn btn-close-form" onClick={() => setIsClicked(!isClicked)}>Close Form</button>
+        <button type='submit' className="btn btn-close-form" onClick={() => setIsFormClicked(!isFormClicked)}>Close Form</button>
       </div>
 
     </form>

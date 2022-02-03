@@ -21,7 +21,7 @@ const Items = ({ items, index, setItems, onChange, onBlur, values, i, setFieldVa
     <div className="dashboard__form-items-container-item">
       <input name={`items.${i}.name`} type="text" placeholder="Name" value={items[i].name} onChange={onChange} onBlur={onBlur} />
       <input name={`items.${i}.price`} type="number" placeholder="Price" value={items[i].price} onChange={onChange} onBlur={onBlur} />
-      <input name={`items.${i}.quantity`} type="number" placeholder="Quantity" value={items[i].quantity} onChange={onChange} onBlur={onBlur} />
+      <input name={`items.${i}.quantity`} type="number" placeholder="Qua." value={items[i].quantity} onChange={onChange} onBlur={onBlur} />
       <svg onClick={handleDelete}>
         <use href="./assets/sprite.svg#icon-bin" />
       </svg>

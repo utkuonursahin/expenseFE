@@ -71,6 +71,7 @@
   height: 5rem;
   padding: 0 2rem;
   display: flex;
+  gap: .5rem;
   align-items: center;
   justify-content: center;
   background-color: abs.$color-purple;
@@ -106,5 +107,26 @@
   background-color: transparent;
   &:hover{
     background-color: abs.$color-darkblue;
+  }
+}
+
+.btn-set-currency{
+  position: relative;
+  height: 100%;
+  width: 7.5rem;
+  background-color: abs.$color-white-gray;
+  color: abs.$color-purple;
+  font-size: 1.6rem;
+  letter-spacing: 1.3px;
+  &::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: abs.$color-purple;
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    transform: translateY(-50%) translateX(-50%);
   }
 }

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import FilterPopup from "./FilterPopup/FilterPopup";
+import FilterPopup from "../FilterPopup/FilterPopup";
 import { useExpenses } from "../../context/ExpensesContext";
 
 const DashboardNav = () => {
   const [renderFilterPopup, setRenderFilterPopup] = useState(false)
-  const { expenses, setIsClicked } = useExpenses()
+  const { expenses, setIsFormClicked } = useExpenses()
   return (
     <nav aria-label="secondary navigation" className="dashboard__nav">
       <h3 className="dashboard__nav--heading heading-3">
@@ -20,7 +20,7 @@ const DashboardNav = () => {
         </button>
         {renderFilterPopup && <FilterPopup />}
       </div>
-      <button className="btn btn-add-expense" onClick={() => setIsClicked(prev => !prev)}>
+      <button className="btn btn-add-expense" onClick={() => setIsFormClicked(prev => !prev)}>
         <svg>
           <use href="./assets/sprite.svg#icon-plus-circle" />
         </svg>

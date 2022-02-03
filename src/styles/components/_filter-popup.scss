@@ -1,0 +1,39 @@
+@use "../abstracts" as abs;
+.filter-popup{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  border-radius: .5rem;
+  background-color: abs.$color-vulcan;
+  box-shadow: 0 0 .5rem .1rem abs.$color-purple--light;
+  & label{
+    text-transform: capitalize;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    font-size: 1.4rem;
+    color: abs.$color-white-gray;
+    &:hover .checkbox{background-color: abs.$color-darkblue}
+    & input{
+      display: none;
+      &:checked + .checkbox{
+        background: url("../../../public/assets/icon-check.svg"), abs.$color-darkblue;
+        background-position: center;
+        background-size: 75%;
+        background-repeat: no-repeat;
+      }
+    }
+    & .checkbox{
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: .5rem;
+      background-color: abs.$color-purple--light;
+    }
+  }
+}

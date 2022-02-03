@@ -1,0 +1,13 @@
+@use "../abstracts" as abs;
+.item-details{
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 10rem);
+  z-index: 1;
+  width: 75%;
+  height: 50%;
+  transform: translateY(-50%) translateX(calc(-50% - 5rem));
+  background-color: abs.$color-darkblue;
+  box-shadow: 0 0 .5rem .25rem abs.$color-purple--light;
+  border-radius: .5rem;
+}
