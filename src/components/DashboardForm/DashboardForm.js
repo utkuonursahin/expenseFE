@@ -8,7 +8,6 @@ const DashboardForm = () => {
   const [itemsCount, setItemsCount] = useState([random()]);
   const handleSubmit = e => {
     e.preventDefault()
-    setIsClicked(!isClicked)
   }
   return (
       <form className={`dashboard__form ${!isClicked ? 'hidden-form' : ""}`} onSubmit={handleSubmit}>
@@ -32,7 +31,11 @@ const DashboardForm = () => {
           </div>
         </div>
 
-        <button type='submit' className="btn btn-create-expense">Create Expense</button>
+        <div className="dashboard__form-buttons">
+          <button type='submit' className="btn btn-create-expense">Create Expense</button>
+          <button type='submit' className="btn btn-close-form" onClick={() => setIsClicked(!isClicked)}>Close Form</button>
+        </div>
+
       </form>
   );
 };

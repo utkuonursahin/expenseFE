@@ -55,7 +55,7 @@
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: abs.$color-white;
-  background-color: abs.$color-purple--light;
+  background-color: abs.$color-purple;
   @media only screen and (max-width: abs.$bp-large){
     font-size: 1.4rem;
     height: 4rem;
@@ -94,5 +94,14 @@
     grid-row: 2 / 3;
     grid-column: 1 / -1;
     width: 100%;
+  }
+}
+
+.btn-close-form{
+  font-size: 1.6rem;
+  color: abs.$color-purple;
+  background-color: transparent;
+  &:hover{
+    background-color: abs.$color-darkblue;
   }
 }
