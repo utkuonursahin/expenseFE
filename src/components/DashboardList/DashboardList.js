@@ -1,32 +1,27 @@
+import moment from 'moment';
+import { useExpenses } from '../../context/ExpensesContext';
+
 const DashboardList = () => {
+  const { expenses } = useExpenses()
+
+  const totalPrice = (items) => {
+    return items.reduce((acc, item) => {
+      return acc + (item.price * item.quantity);
+    }, 0)
+  }
 
   return (
-      <ul className="dashboard__list">
-        <li className="dashboard__list-item">
-          <span>31/01/22</span>
-          <span>Apple Watch</span>
-          <span>Electronics</span>
-          <span>$340</span>
+    <ul className="dashboard__list">
+      {expenses.map(expense => (
+        <li key={expense._id} className="dashboard__list-item">
+          <span>{moment(expense.expense_date).format('ll')}</span>
+          <span>{expense.title}</span>
+          <span>{expense.category.title}</span>
+          <span>{totalPrice(expense.items)}</span>
           <button className="btn btn-show-more">Show more</button>
         </li>
-
-        <li className="dashboard__list-item">
-          <span>31/01/22</span>
-          <span>Network.net SEO Agency</span>
-          <span>Service</span>
-          <span>$250</span>
-          <button className="btn btn-show-more">Show more</button>
-        </li>
-
-        <li className="dashboard__list-item">
-          <span>31/01/22</span>
-          <span>Starbucks Coffee</span>
-          <span>Drink</span>
-          <span>$3</span>
-          <button className="btn btn-show-more">Show more</button>
-        </li>
-
-      </ul>
+      ))}
+    </ul>
   );
 };
 
