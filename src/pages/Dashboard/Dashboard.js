@@ -4,7 +4,6 @@ import DashboardNav from "../../components/DashboardNav/DashboardNav";
 import DashboardList from "../../components/DashboardList/DashboardList";
 import DashboardForm from "../../components/DashboardForm/DashboardForm";
 import Overlay from "../../components/Overlay/Overlay";
-import ItemDetails from "../../components/ItemDetails/ItemDetails";
 
 const Dashboard = () => {
   return (
@@ -14,7 +13,6 @@ const Dashboard = () => {
         <DashboardNav />
         <DashboardList />
         <DashboardForm />
-        <ItemDetails/>
         <Overlay />
       </ExpensesProvider>
     </section>

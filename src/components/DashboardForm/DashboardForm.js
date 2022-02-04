@@ -117,7 +117,7 @@ const DashboardForm = () => {
 
       <div className="dashboard__form-buttons">
         <button type='submit' className="btn btn-create-expense">Create Expense</button>
-        <button type='submit' className="btn btn-close-form" onClick={() => setIsFormClicked(!isFormClicked)}>Close Form</button>
+        <button type='button' className="btn btn-close-form" onClick={() => setIsFormClicked(!isFormClicked)}>Close Form</button>
       </div>
 
     </form>

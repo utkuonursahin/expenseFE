@@ -5,17 +5,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/A-Side/A-Side.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/A-Side/A-Side.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/DashboardForm/DashboardForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardForm/DashboardForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DashboardForm/Items/Items.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardForm/Items/Items.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/DashboardList/DashboardList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardList/DashboardList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DashboardNav/DashboardNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardNav/DashboardNav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DashboardNav/FilterPopup/FilterPopup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FilterPopup/FilterPopup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Overlay/Overlay.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Overlay/Overlay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/ExpensesContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/ExpensesContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ItemDetails/ItemDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ItemDetails/ItemDetails.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Dashboard/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ProtectedRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ProtectedRoute.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/_abstracts.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/_abstracts.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/components/buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/components/buttons.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/components/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/components/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/components/item-details.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/components/item-details.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/layout/_dashboard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/layout/_dashboard.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,6 +84,9 @@
       <workItem from="1643826903387" duration="2181000" />
       <workItem from="1643891868653" duration="7190000" />
       <workItem from="1643918642398" duration="1956000" />
+      <workItem from="1643973821296" duration="1883000" />
+      <workItem from="1643975779006" duration="19000" />
+      <workItem from="1643979565960" duration="9110000" />
     </task>
     <servers />
   </component>

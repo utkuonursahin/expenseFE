@@ -5,7 +5,7 @@ const ASide = () => {
           <use href="./assets/sprite.svg#icon-logo"/>
         </svg>
         <span className="dashboard__aside--horizontal"/>
-        <img src="./assets/image-avatar.jpg" alt="Image avatar" className="dashboard__aside--profile-link"/>
+        <img src="./assets/image-avatar.jpg" alt="Profile avatar" className="dashboard__aside--profile-link"/>
       </nav>
   );
 };

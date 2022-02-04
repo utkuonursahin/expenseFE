@@ -130,3 +130,27 @@
     transform: translateY(-50%) translateX(-50%);
   }
 }
+
+.btn-edit, .btn-delete, .btn-close{
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  letter-spacing: 1.4px;
+  &:hover{opacity: .75;}
+}
+
+.btn-edit{
+  height: 5rem;
+  background-color: abs.$color-purple;
+  color: abs.$color-white;
+}
+
+.btn-delete{
+  background-color: abs.$color-red;
+  color: abs.$color-white;
+}
+
+.btn-close{
+  padding: 0 1rem;
+  background-color:transparent;
+  color: abs.$color-white;
+}
