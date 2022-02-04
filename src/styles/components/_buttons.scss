@@ -34,22 +34,31 @@
   }
 }
 
-.btn-categories{
+.btn-categories-nav,.btn-categories-form{
   display: flex;
   align-items: center;
   height: 5rem;
   gap: 1rem;
   font-size: 1.6rem;
-  font-weight: 700;
-  color: abs.$color-purple--light;
-  background-color: transparent;
-  @media only screen and(max-width: abs.$bp-largest){font-size: 1.4rem}
   & svg{
+    transform: rotate(180deg);
     width: 2rem;
     height: 100%;
     fill: abs.$color-purple;
-    transition: transform .25s ease-in-out;
   }
+  @media only screen and(max-width: abs.$bp-largest){font-size: 1.4rem}
+}
+
+.btn-categories-nav{
+  font-weight: 700;
+  color: abs.$color-purple--light;
+  background-color: transparent;
+}
+
+.btn-categories-form{
+  width: 100%;
+  justify-content: center;
+  background-color: abs.$color-white;
 }
 
 .btn-create-expense, .btn-add-item{

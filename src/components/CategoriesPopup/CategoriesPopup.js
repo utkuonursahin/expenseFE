@@ -1,15 +1,16 @@
 import { useCategory } from '../../context/CategoryContext';
-const FilterPopup = () => {
+const CategoriesPopup = ({setVisibility}) => {
   const { categories } = useCategory();
-  const handleClick = (e) => {
-    console.log(e.target.value);
+  const handleClick = () => {
+    setTimeout(() => setVisibility(prev => !prev),1000)
     // if (e.target.tagName !== 'INPUT') return
   }
   return (
-    <div className="filter-popup" onClick={handleClick}>
+    <div className="categories-popup">
       {categories.map(category => (
         <label key={category._id} htmlFor={category._id}>
-          <input type="radio" id={category._id} value={category._id} name="radio-input" />
+          <input type="radio" id={category._id} value={category._id}
+                 name="radio-input" onChange={handleClick}/>
           <span className="checkbox" />
           <span>{category.title}</span>
         </label>
@@ -18,4 +19,4 @@ const FilterPopup = () => {
   );
 };
 
-export default FilterPopup;
+export default CategoriesPopup;
