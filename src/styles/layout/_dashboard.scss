@@ -105,17 +105,14 @@
     &-items{
       height: 100%;
       display: grid;
-      grid-template-rows: repeat(auto-fit,minmax(min-content,max-content));
-      gap: 2rem;
+      grid-template-rows: repeat(auto-fit,minmax(8rem,max-content));
+      grid-auto-rows: 8rem;
+      gap: 1.5rem;
       list-style: none;
       padding: 1rem;
-      @media only screen and (max-width: abs.$bp-large){
-        grid-template-rows: repeat(auto-fit,minmax(min-content,max-content));
-        gap: 1rem;
-      }
 
       &-item {
-        padding: 2.5rem 3rem;
+        padding: 2rem 2.5rem;
         display: grid;
         grid-template-columns: repeat(5,1fr);
         align-items: center;
@@ -232,13 +229,13 @@
     &-date{grid-template-rows: repeat(2,min-content);}
 
     &-items{
-      grid-template-rows: repeat(2,min-content) 12.5rem;
+      grid-template-rows: repeat(3,min-content);
       &-container{
         padding: 0 .5rem;
         display: grid;
         grid-auto-rows: 5rem;
         gap: 1rem;
-        height: 100%;
+        max-height: 12.5rem;
         &-item{
           width: 100%;
           display: grid;

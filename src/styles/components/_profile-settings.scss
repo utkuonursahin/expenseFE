@@ -1,0 +1,51 @@
+@use "../abstracts" as abs;
+.profile-settings{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100vh;
+  width: 12rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  background-color: abs.$color-purple;
+  border-radius: 0 3.5rem 0 0;
+  transition: all .5s ease-in-out;
+  @media only screen and(max-width: abs.$bp-large){
+    top: 0;
+    right: 0;
+    left: auto;
+    height: min-content;
+    border-radius: 0 0 0 3.5rem;
+  }
+  & img{
+    height: 5rem;
+    width: 5rem;
+    border-radius: 5rem;
+  }
+  & ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+
+    & li{
+      cursor: pointer;
+      width: 100%;
+      height: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 1.6rem;
+      color: abs.$color-white-gray;
+      border-radius: .5rem;
+      transition: all .25s ease-in-out;
+      &:hover{
+        transform: translateY(-.25rem);
+        background-color: abs.$color-darkblue;
+      }
+    }
+  }
+}

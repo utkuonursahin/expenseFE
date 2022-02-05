@@ -3,7 +3,7 @@ $color-purple: #7c5dfa;
 $color-purple--light: #9277ff;
 $color-darkblue: #181f45;
 $color-vulcan: #0c0e16;
-$color-red: #ec5757;
+$color-red: #dc2c2c;
 $color-white: #fff;
 $color-white-gray: #ddd;
 
@@ -22,7 +22,15 @@ $bp-small: 26.25em; //420px
   @media only screen and (max-width: $bp-large){transform: translate(0,calc(-100%));}
 }
 
-.hidden{display: none;}
+.hidden-profile{
+  transform: translateX(-100%);
+  transition: all .5s ease-in-out;
+  @media only screen and(max-width: $bp-large){
+    transform: translateY(-100%);
+  }
+}
+
+.hidden{display: none}
 
 .overlay{
   z-index: 0;

@@ -15,14 +15,14 @@ const DashboardNav = () => {
         <button type="button" className="btn btn-categories-nav" onClick={() => setRenderCategories(prev => !prev)}>
           Categories
           <svg>
-            <use href="./assets/sprite.svg#icon-keyboard_arrow_up" />
+            <use href="./assets/sprite.svg#icon-arrow-up" />
           </svg>
         </button>
         {renderCategories && <CategoriesPopup setVisibility={setRenderCategories}/>}
       </div>
       <button className="btn btn-add-expense" onClick={() => setIsFormClicked(prev => !prev)}>
         <svg>
-          <use href="./assets/sprite.svg#icon-plus-circle" />
+          <use href="./assets/sprite.svg#icon-plus" />
         </svg>
         <span>Add Expense</span>
       </button>
