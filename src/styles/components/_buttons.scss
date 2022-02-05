@@ -34,22 +34,31 @@
   }
 }
 
-.btn-categories{
+.btn-categories-nav,.btn-categories-form{
   display: flex;
   align-items: center;
   height: 5rem;
   gap: 1rem;
   font-size: 1.6rem;
-  font-weight: 700;
-  color: abs.$color-purple--light;
-  background-color: transparent;
-  @media only screen and(max-width: abs.$bp-largest){font-size: 1.4rem}
   & svg{
+    transform: rotate(180deg);
     width: 2rem;
     height: 100%;
     fill: abs.$color-purple;
-    transition: transform .25s ease-in-out;
   }
+  @media only screen and(max-width: abs.$bp-largest){font-size: 1.4rem}
+}
+
+.btn-categories-nav{
+  font-weight: 700;
+  color: abs.$color-purple--light;
+  background-color: transparent;
+}
+
+.btn-categories-form{
+  width: 100%;
+  justify-content: center;
+  background-color: abs.$color-white;
 }
 
 .btn-create-expense, .btn-add-item{
@@ -129,4 +138,28 @@
     clip-path: polygon(100% 0%, 0 0%, 50% 100%);
     transform: translateY(-50%) translateX(-50%);
   }
+}
+
+.btn-edit, .btn-delete, .btn-close{
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  letter-spacing: 1.4px;
+  &:hover{opacity: .75;}
+}
+
+.btn-edit{
+  height: 5rem;
+  background-color: abs.$color-purple;
+  color: abs.$color-white;
+}
+
+.btn-delete{
+  background-color: abs.$color-red;
+  color: abs.$color-white;
+}
+
+.btn-close{
+  padding: 0 1rem;
+  background-color:transparent;
+  color: abs.$color-white;
 }

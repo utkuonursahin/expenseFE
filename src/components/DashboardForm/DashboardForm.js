@@ -7,11 +7,12 @@ import Items from './Items/Items';
 import { createExpense } from '../../api';
 import moment from 'moment';
 import validationSchema from "./validations";
+import CategoriesPopup from "../CategoriesPopup/CategoriesPopup";
 
 const DashboardForm = () => {
   const { isFormClicked, setIsFormClicked, refreshExpenses } = useExpenses()
   const [items, setItems] = useState([random()]);
-
+  const [renderCategories, setRenderCategories] = useState(false)
   const formik = useFormik({
     initialValues: {
       title: '',
@@ -70,14 +71,24 @@ const DashboardForm = () => {
           value={formik.values.title}
         />
 
-        <input
+        {/*<input
           name='category'
           type="text"
           placeholder="Category"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.category}
-        />
+        />*/}
+
+        <div className="dashboard__form-details-categories">
+          <button type="button" className="btn btn-categories-form" onClick={() => setRenderCategories(prev => !prev)}>
+            Categories
+            <svg>
+              <use href="./assets/sprite.svg#icon-keyboard_arrow_up" />
+            </svg>
+          </button>
+          {renderCategories && <CategoriesPopup setVisibility={setRenderCategories} />}
+        </div>
 
         <textarea
           name='description'
@@ -119,7 +130,7 @@ const DashboardForm = () => {
         </div>
       </div>
       <div className="dashboard__form-buttons">
-        <button type='submit' className="btn btn-create-expense" >Create Expense</button>
+        <button type='submit' className="btn btn-create-expense">Create Expense</button>
         <button type='button' className="btn btn-close-form" onClick={() => setIsFormClicked(!isFormClicked)}>Close Form</button>
       </div>
 

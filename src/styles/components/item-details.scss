@@ -4,10 +4,57 @@
   top: 50%;
   left: calc(50% + 10rem);
   z-index: 1;
-  width: 75%;
-  height: 50%;
+  min-height: 50%;
+  padding: 2.5rem 3rem;
+  display: grid;
+  grid-template-rows: repeat(6,min-content);
+  grid-row-gap: 2rem;
+  justify-items: center;
+  align-content: center;
   transform: translateY(-50%) translateX(calc(-50% - 5rem));
   background-color: abs.$color-darkblue;
   box-shadow: 0 0 .5rem .25rem abs.$color-purple--light;
   border-radius: .5rem;
+  @media only screen and (max-width: abs.$bp-large){
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 1.5rem;
+  }
+  @media only screen and (max-width: abs.$bp-small){
+    padding: .25rem;
+    & h3{font-size: 2rem;}
+  }
+  & h3,h4{justify-self: center; white-space: nowrap;}
+
+  & li{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    color: abs.$color-white-gray;
+    text-transform: capitalize;
+    font-size: 1.6rem;
+    font-weight: abs.$font-bold;
+    & span{
+      font-weight: abs.$font-tiny;
+      font-size: 1.4rem;
+    }
+  }
+  &__list-general{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    list-style: none;
+  }
+  &__list-items{
+    grid-row: 5 / 6;
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  &__buttons{
+    grid-row: 6 / 7;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 2rem;
+  }
 }

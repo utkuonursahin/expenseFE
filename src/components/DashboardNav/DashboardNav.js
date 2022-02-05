@@ -1,9 +1,9 @@
 import { useState } from "react";
-import FilterPopup from "../FilterPopup/FilterPopup";
+import CategoriesPopup from "../CategoriesPopup/CategoriesPopup";
 import { useExpenses } from "../../context/ExpensesContext";
 
 const DashboardNav = () => {
-  const [renderFilterPopup, setRenderFilterPopup] = useState(false)
+  const [renderCategories, setRenderCategories] = useState(false)
   const { expenses, setIsFormClicked } = useExpenses()
   return (
     <nav aria-label="secondary navigation" className="dashboard__nav">
@@ -12,13 +12,13 @@ const DashboardNav = () => {
         <span className="dashboard__nav--info">There are {expenses.length} total expenses</span>
       </h3>
       <div className="dashboard__nav--filter" tabIndex={1}>
-        <button className="btn btn-categories" onClick={() => setRenderFilterPopup(prev => !prev)}>
+        <button type="button" className="btn btn-categories-nav" onClick={() => setRenderCategories(prev => !prev)}>
           Categories
           <svg>
             <use href="./assets/sprite.svg#icon-keyboard_arrow_up" />
           </svg>
         </button>
-        {renderFilterPopup && <FilterPopup />}
+        {renderCategories && <CategoriesPopup setVisibility={setRenderCategories}/>}
       </div>
       <button className="btn btn-add-expense" onClick={() => setIsFormClicked(prev => !prev)}>
         <svg>

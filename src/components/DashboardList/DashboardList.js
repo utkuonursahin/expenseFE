@@ -1,9 +1,11 @@
 import moment from 'moment';
 import { useExpenses } from '../../context/ExpensesContext';
+import ItemDetails from "../ItemDetails/ItemDetails";
+import {useState} from "react";
 
 const DashboardList = () => {
-  const { expenses, setIsDetailsClicked } = useExpenses()
-
+  const { expenses, isDetailsClicked, setIsDetailsClicked} = useExpenses()
+  const [detailedExpense, setDetailedExpense] = useState()
   const totalPrice = (items) => {
     const totalPrice = items.reduce((acc, item) => {
       return acc + (item.price * item.quantity);
@@ -11,18 +13,26 @@ const DashboardList = () => {
     return parseInt(totalPrice).toLocaleString('tr-TR', { style: 'currency', currency: items[0].currency });
   }
 
+  const handleClick = (expense) => {
+    setIsDetailsClicked(prev => !prev)
+    setDetailedExpense(expense)
+  }
+
   return (
-    <ul className="dashboard__list">
-      {expenses.map(expense => (
-        <li key={expense._id} className="dashboard__list-item">
-          <span>{moment(expense.expense_date).format('ll')}</span>
-          <span>{expense.title}</span>
-          <span className="dashboard__list-item-category" >{expense.category.title}</span>
-          <span>{totalPrice(expense.items)}</span>
-          <button className="btn btn-show-more" onClick={() => setIsDetailsClicked(prev => !prev)}>Show more</button>
-        </li>
-      ))}
-    </ul>
+    <div className="dashboard__list">
+      <ul className="dashboard__list-items">
+        {expenses.map(expense => (
+            <li key={expense._id} className="dashboard__list-items-item">
+              <span>{moment(expense.expense_date).format('ll')}</span>
+              <span>{expense.title}</span>
+              <span className="dashboard__list-items-item-category" >{expense.category.title}</span>
+              <span>{totalPrice(expense.items)}</span>
+              <button className="btn btn-show-more" onClick={() => handleClick(expense)}>Show more</button>
+            </li>
+        ))}
+      </ul>
+      {isDetailsClicked && <ItemDetails detailedExpense={detailedExpense} setIsDetailsClicked={setIsDetailsClicked}/>}
+    </div>
   );
 };
 
