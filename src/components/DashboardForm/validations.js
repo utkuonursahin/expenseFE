@@ -15,6 +15,9 @@ const validations = yup.object().shape({
     expense_date: yup
         .date()
     ,
+    currency: yup
+        .string()
+        .required(),
     items: yup.array().of(
         yup.object().shape({
             name: yup

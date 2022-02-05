@@ -18,17 +18,18 @@ const DashboardForm = () => {
       description: "",
       category: "",
       expense_date: moment().format('YYYY-MM-DD'),
+      currency: "TRY",
       items: [{
         name: "",
         price: "",
-        quantity: "",
-        currency: "TRY"
+        quantity: ""
       }]
     },
     validationSchema,
     onSubmit: async (values, bag) => {
       try {
-        console.log(values);
+        values.items.forEach(item => item.currency = values.currency)
+        delete values.currency
         await createExpense(values);
         await refreshExpenses();
         setIsFormClicked(!isFormClicked)
@@ -67,7 +68,7 @@ const DashboardForm = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.title}
-          className={`${formik.touched.title && formik.errors.title ? "error" : ""}`}/>
+        />
 
         <input
           name='category'
@@ -85,7 +86,10 @@ const DashboardForm = () => {
           onBlur={formik.handleBlur}
           value={formik.values.description} />
 
-        <select className="dashboard__form-details-select">
+        <select name="currency" value={formik.values.currency} className="dashboard__form-details-select"
+          onClick={formik.handleChange}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}>
           <option value="USD">USD ($)</option>
           <option value="EUR">EUR (€)</option>
           <option value="GBP">GBP (£)</option>
@@ -114,10 +118,9 @@ const DashboardForm = () => {
           {items.map((index, i) => (<Items key={index} items={items} i={i} index={index} setItems={setItems} onChange={formik.handleChange} values={formik.values.items} setFieldValue={formik.setFieldValue} onBlur={formik.handleBlur} />))}
         </div>
       </div>
-
       <div className="dashboard__form-buttons">
-        <button type='submit' className="btn btn-create-expense">Create Expense</button>
-        <button type='submit' className="btn btn-close-form" onClick={() => setIsFormClicked(!isFormClicked)}>Close Form</button>
+        <button type='submit' className="btn btn-create-expense" >Create Expense</button>
+        <button type='button' className="btn btn-close-form" onClick={() => setIsFormClicked(!isFormClicked)}>Close Form</button>
       </div>
 
     </form>
