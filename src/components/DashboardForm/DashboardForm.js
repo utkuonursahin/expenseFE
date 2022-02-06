@@ -120,7 +120,7 @@ const DashboardForm = () => {
           <button type="button" className="btn btn-categories-form" onClick={() => setRenderCategories(prev => !prev)}>
             {currentCategory ? currentCategory.title : "Categories"}
             <svg>
-              <use href="./assets/sprite.svg#icon-keyboard_arrow_up" />
+              <use href="./assets/sprite.svg#icon-arrow-up" />
             </svg>
           </button>
           {renderCategories && <CategoriesPopup setVisibility={setRenderCategories} />}

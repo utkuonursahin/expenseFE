@@ -1,60 +1,105 @@
 @use "../abstracts" as abs;
 .item-details{
   position: absolute;
+  z-index: 1;
   top: 50%;
   left: calc(50% + 10rem);
-  z-index: 1;
-  min-height: 50%;
-  padding: 2.5rem 3rem;
+  min-width: 50%;
+  padding: 2.5rem 0;
   display: grid;
-  grid-template-rows: repeat(6,min-content);
-  grid-row-gap: 2rem;
+  grid-template-columns: 2.5rem [details-start] repeat(2,1fr) [details-end] 2.5rem;
+  grid-template-rows: repeat(4,min-content);
+  grid-row-gap: 5rem;
   justify-items: center;
-  align-content: center;
+  align-items: center;
   transform: translateY(-50%) translateX(calc(-50% - 5rem));
   background-color: abs.$color-darkblue;
-  box-shadow: 0 0 .5rem .25rem abs.$color-purple--light;
   border-radius: .5rem;
-  @media only screen and (max-width: abs.$bp-large){
+  & svg{
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: abs.$color-purple;
+    &:hover{fill: abs.$color-white;}
+  }
+  @media only screen and (max-width: abs.$bp-large) {
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     padding: 1.5rem;
+    min-width: 90%;
   }
-  @media only screen and (max-width: abs.$bp-small){
-    padding: .25rem;
-    & h3{font-size: 2rem;}
-  }
-  & h3,h4{justify-self: center; white-space: nowrap;}
 
-  & li{
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    color: abs.$color-white-gray;
-    text-transform: capitalize;
-    font-size: 1.6rem;
-    font-weight: abs.$font-bold;
-    & span{
-      font-weight: abs.$font-tiny;
+  &__heading{grid-column: details-start / details-end;}
+
+  &__general-list{
+    width: 100%;
+    grid-column: details-start / details-end;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(2,1fr);
+    list-style: none;
+    grid-row-gap: 2rem;
+    justify-items: center;
+    @media only screen and(max-width: abs.$bp-small){
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4,1fr);
+    }
+    &--item{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
       font-size: 1.4rem;
+      color: abs.$color-white;
+      text-transform: capitalize;
+      & span{
+        font-weight: abs.$font-bold;
+        font-size: 1.6rem;
+        text-align: center;
+      }
     }
   }
-  &__list-general{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    list-style: none;
-  }
-  &__list-items{
-    grid-row: 5 / 6;
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-  }
-  &__buttons{
-    grid-row: 6 / 7;
+
+  &__items{
+    padding-top: 2rem;
+    width: 100%;
+    grid-column: details-start / details-end;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 2rem;
+    grid-template-rows: min-content repeat(auto-fit,minmax(min-content,max-content) min-content);
+    grid-row-gap: 2.5rem;
+    background-color: rgba(abs.$color-vulcan, .25);
+    border-radius: 1rem;
+    &-headings, &-list, &-total{
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      justify-items: center;
+      font-size: 1.4rem;
+      color: abs.$color-white;
+    }
+    &-headings{font-weight: abs.$font-bold}
+    &-list{list-style: none;}
+    &-total{
+      padding: 2rem 0;
+      background-color: abs.$color-purple;
+      border-radius: 0 0 1rem 1rem;
+      font-weight: abs.$font-bold;
+      & span:first-child{text-align: center;}
+      & span:last-child{grid-column: -2 / -1}
+    }
+  }
+
+  &__buttons{
+    width: 100%;
+    grid-column: details-start / details-end;
+    grid-row: 4 / 5;
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    & button{
+      width: 20rem;
+    }
   }
 }
