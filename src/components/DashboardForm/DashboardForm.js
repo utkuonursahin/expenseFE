@@ -4,7 +4,7 @@ import { random } from "../../helper"
 import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import Items from './Items/Items';
-import { createExpense } from '../../api';
+import { createExpense, updateExpense } from '../../api';
 import moment from 'moment';
 import validationSchema from "./validations";
 import CategoriesPopup from "../CategoriesPopup/CategoriesPopup";
@@ -22,7 +22,7 @@ const DashboardForm = () => {
     initialValues: {
       title: detailsExpense?.title || '',
       description: detailsExpense?.description || "",
-      category: "",
+      category: detailsExpense?.category?._id || "",
       expense_date: moment(detailsExpense?.expense_date).format('YYYY-MM-DD') || moment().format('YYYY-MM-DD'),
       currency: detailsExpense?.currency || "TRY",
       items: detailsExpense?.items || [{
@@ -46,14 +46,17 @@ const DashboardForm = () => {
         })
       try {
         if (detailsExpense) {
-          console.log(values);
-          values.category = currentCategory._id;
-          values.items.forEach(item => item.currency = values.currency)
+          values.category = currentCategory._id === detailsExpense.category._id ? detailsExpense.category._id : currentCategory._id;
+          values.items.forEach(item => {
+            item.currency = values.currency
+            delete item._id
+            return item
+          })
           delete values.currency
-          await createExpense(detailsExpense._id, values);
+          await updateExpense(detailsExpense._id, values);
           await refreshExpenses();
           setIsFormClicked(!isFormClicked)
-          toast.success('Expense created successfully', {
+          toast.success('Expense updated successfully', {
             position: "bottom-right",
             autoClose: 3000,
             hideProgressBar: false,
@@ -100,8 +103,8 @@ const DashboardForm = () => {
   useEffect(() => {
     if (detailsExpense)
       setItems(formik.initialValues.items);
-  }, [formik.values.items])
-  console.log(formik.values);
+  }, [])
+
 
   return (
     <form className={`dashboard__form ${!isFormClicked ? 'hidden-form' : ""}`} onSubmit={formik.handleSubmit}>
@@ -174,7 +177,7 @@ const DashboardForm = () => {
         </div>
       </div>
       <div className="dashboard__form-buttons">
-        <button type='submit' className="btn btn-create-expense">Create Expense</button>
+        <button type='submit' className="btn btn-create-expense">{detailsExpense ? "Update Expense" : "Create Expense"}</button>
         <button type='button' className="btn btn-close-form" onClick={() => { setCurrentCategory(null); setIsFormClicked(!isFormClicked) }}>Close Form</button>
       </div>
 

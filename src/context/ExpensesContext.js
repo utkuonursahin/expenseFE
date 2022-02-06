@@ -8,9 +8,6 @@ const ExpensesProvider = ({ children }) => {
   const [isFormClicked, setIsFormClicked] = useState(false)
   const [detailsExpense, setDetailsExpense] = useState(null)
 
-  useEffect(() => {
-    refreshExpenses()
-  }, [])
 
   const refreshExpenses = async () => {
     if (localStorage.getItem("user")) {
