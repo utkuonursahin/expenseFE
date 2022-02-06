@@ -1,10 +1,10 @@
 import { toast } from 'react-toastify';
 
-const Items = ({ items, index, setItems, onChange, onBlur, values, i, setFieldValue }) => {
+const Items = ({ items, index, setItems, i, formik }) => {
   const handleDelete = () => {
     if (items.length > 1) {
       setItems(items.filter(el => el._id !== index))
-      setFieldValue('items', values.filter(el => el.name !== values[i]?.name));
+      formik.setFieldValue('items', formik.values.items.filter((_, order) => order !== i));
     } else {
       toast.error('You can not delete last item', {
         position: "bottom-right",
@@ -19,9 +19,9 @@ const Items = ({ items, index, setItems, onChange, onBlur, values, i, setFieldVa
   }
   return (
     <div className="dashboard__form-items-container-item">
-      <input name={`items.${i}.name`} type="text" placeholder="Name" value={values[i].name} onChange={onChange} onBlur={onBlur} />
-      <input name={`items.${i}.price`} type="number" placeholder="Price" value={values[i].price} onChange={onChange} onBlur={onBlur} />
-      <input name={`items.${i}.quantity`} type="number" placeholder="Qty" value={values[i].quantity} onChange={onChange} onBlur={onBlur} />
+      <input name={`items.${i}.name`} type="text" className={`${formik?.touched?.items?.[i]?.name && formik?.errors?.items?.[i]?.name ? "error" : ""}`} placeholder="Name" value={formik.values.items[i].name} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+      <input name={`items.${i}.price`} type="number" className={`${formik?.touched?.items?.[i]?.price && formik?.errors?.items?.[i]?.price ? "error" : ""}`} placeholder="Price" value={formik.values.items[i].price} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+      <input name={`items.${i}.quantity`} type="number" className={`${formik?.touched?.items?.[i]?.quantity && formik?.errors?.items?.[i]?.quantity ? "error" : ""}`} placeholder="Qty" value={formik.values.items[i].quantity} onChange={formik.handleChange} onBlur={formik.handleBlur} />
       <svg onClick={handleDelete}>
         <use href="./assets/sprite.svg#icon-bin" />
       </svg>

@@ -7,11 +7,11 @@ const DashboardList = () => {
   const { expenses } = useExpenses()
   const [detailedExpense, setDetailedExpense] = useState()
   const [isDetailsClicked, setIsDetailsClicked] = useState(false)
-  const totalPrice = (items) => {
-    const totalPrice = items.reduce((acc, item) => {
+  const totalPrice = (expense) => {
+    const totalPrice = expense.items.reduce((acc, item) => {
       return acc + (item.price * item.quantity);
     }, 0)
-    return parseInt(totalPrice).toLocaleString('tr-TR', { style: 'currency', currency: items[0].currency });
+    return parseInt(totalPrice).toLocaleString('tr-TR', { style: 'currency', currency: expense.currency });
   }
 
   const handleClick = (expense) => {
@@ -27,7 +27,7 @@ const DashboardList = () => {
             <span>{moment(expense.expense_date).format('ll')}</span>
             <span>{expense.title}</span>
             <span className="dashboard__list-items-item-category" >{expense.category.title}</span>
-            <span>{totalPrice(expense.items)}</span>
+            <span>{totalPrice(expense)}</span>
             <button className="btn btn-show-more" onClick={() => handleClick(expense)}>Show more</button>
           </li>
         ))}

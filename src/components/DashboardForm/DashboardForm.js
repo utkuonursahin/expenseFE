@@ -46,13 +46,7 @@ const DashboardForm = () => {
         })
       try {
         if (detailsExpense) {
-          values.category = currentCategory._id === detailsExpense.category._id ? detailsExpense.category._id : currentCategory._id;
-          values.items.forEach(item => {
-            item.currency = values.currency
-            delete item._id
-            return item
-          })
-          delete values.currency
+          // values.category = currentCategory._id === detailsExpense.category._id ? detailsExpense.category._id : currentCategory._id;
           await updateExpense(detailsExpense._id, values);
           await refreshExpenses();
           setIsFormClicked(!isFormClicked)
@@ -66,9 +60,7 @@ const DashboardForm = () => {
             progress: undefined,
           });
         } else {
-          values.category = currentCategory._id;
-          values.items.forEach(item => item.currency = values.currency)
-          delete values.currency
+          // values.category = currentCategory._id;
           await createExpense(values);
           await refreshExpenses();
           setIsFormClicked(!isFormClicked)
@@ -100,10 +92,20 @@ const DashboardForm = () => {
     }
   })
 
+  const handleAddItem = () => {
+    formik.setFieldValue("items", [...formik.values.items, { name: "", quantity: "", price: "" }]);
+    setItems(prev => [...prev, { _id: random() }]);
+  }
+
   useEffect(() => {
     if (detailsExpense)
       setItems(formik.initialValues.items);
   }, [])
+
+  useEffect(() => {
+    if (!renderCategories && currentCategory)
+      formik.setFieldValue("category", currentCategory._id);
+  }, [renderCategories])
 
 
   return (
@@ -117,10 +119,11 @@ const DashboardForm = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.title}
+          className={`${formik.touched.title && formik.errors.title ? "error" : ""}`}
         />
 
-        <div className="dashboard__form-details-categories">
-          <button type="button" className="btn btn-categories-form" onClick={() => setRenderCategories(prev => !prev)}>
+        <div className="dashboard__form-details-categories"   >
+          <button type="button" name="category" onBlur={() => { formik.setFieldTouched("category", true); !currentCategory && formik.setFieldError("category", "category is a required field") }} className={`btn btn-categories-form ${formik.touched.category && formik.errors.category ? "error" : ""}`} onClick={() => setRenderCategories(prev => !prev)}>
             {currentCategory ? currentCategory.title : "Categories"}
             <svg>
               <use href="./assets/sprite.svg#icon-arrow-up" />
@@ -134,12 +137,14 @@ const DashboardForm = () => {
           placeholder="Description"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.description} />
+          value={formik.values.description}
+          className={`${formik.touched.description && formik.errors.description ? "error" : ""}`} />
 
-        <select name="currency" value={formik.values.currency} className="dashboard__form-details-select"
+        <select name="currency" value={formik.values.currency} className={`dashboard__form-details-select ${formik.touched.currency && formik.errors.currency ? "error" : ""}`}
           onClick={formik.handleChange}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}>
+
           <option value="USD">USD ($)</option>
           <option value="EUR">EUR (€)</option>
           <option value="GBP">GBP (£)</option>
@@ -158,12 +163,13 @@ const DashboardForm = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.expense_date}
+          className={`${formik.touched.expense_date && formik.errors.expense_date ? "error" : ""}`}
         />
       </div>
 
       <div className="dashboard__form-items">
         <h4 className="heading-4">Expense Items</h4>
-        <button type='button' className="btn btn-add-item" onClick={() => setItems(prev => [...prev, { _id: random() }])}>Add item</button>
+        <button type='button' className="btn btn-add-item" onClick={handleAddItem}>Add item</button>
         <div className="dashboard__form-items-container">
           {items.map((index, i) => (<Items
             key={index._id}
@@ -171,9 +177,7 @@ const DashboardForm = () => {
             i={i}
             index={index._id}
             setItems={setItems}
-            onChange={formik.handleChange}
-            values={formik.values.items}
-            setFieldValue={formik.setFieldValue} onBlur={formik.handleBlur} />))}
+            formik={formik} />))}
         </div>
       </div>
       <div className="dashboard__form-buttons">
