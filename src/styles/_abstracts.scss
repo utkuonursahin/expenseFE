@@ -2,7 +2,7 @@
 $color-purple: #7c5dfa;
 $color-purple--light: #9277ff;
 $color-darkblue: #181f45;
-$color-vulcan: #0c0e16;
+$color-vulcan: rgb(20, 22, 37);
 $color-red: #dc2c2c;
 $color-white: #fff;
 $color-white-gray: #ddd;
@@ -23,11 +23,8 @@ $bp-small: 26.25em; //420px
 }
 
 .hidden-profile{
-  transform: translateX(-100%);
+  transform: translateY(-100%);
   transition: all .5s ease-in-out;
-  @media only screen and(max-width: $bp-large){
-    transform: translateY(-100%);
-  }
 }
 
 .hidden{display: none}
@@ -42,3 +39,14 @@ $bp-small: 26.25em; //420px
   background-color: rgba($color-vulcan,.75);
 }
 
+.error{
+  animation: borderAnimation 1s infinite;
+}
+@keyframes borderAnimation {
+  0%{
+    box-shadow: 0 0 0 .25rem #ff1c1c;
+  }
+  100%{
+    box-shadow: 0 0 0 .25rem #a32020;
+  }
+}

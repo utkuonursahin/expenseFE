@@ -61,23 +61,18 @@ const DashboardForm = () => {
     <form className={`dashboard__form ${!isFormClicked ? 'hidden-form' : ""}`} onSubmit={formik.handleSubmit}>
       <div className="dashboard__form-details">
         <h4 className="heading-4" >Expense Details</h4>
-        <input
-          name='title'
-          type="text"
-          placeholder="Title"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.title}
-          className={`${formik.touched.title && formik.errors.title ? "error" : ""}`}/>
-
-        {/*<input
-          name='category'
-          type="text"
-          placeholder="Category"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.category}
-        />*/}
+        <div className="input__group">
+          <input
+              id="title"
+              name='title'
+              type="text"
+              placeholder="Title"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.title}
+              className={`${formik.touched.title && formik.errors.title ? "error" : ""} input__group-input`}/>
+          <label htmlFor="title">Title</label>
+        </div>
 
         <div className="dashboard__form-details-categories">
           <button type="button" className="btn btn-categories-form" onClick={() => setRenderCategories(prev => !prev)}>
@@ -89,12 +84,17 @@ const DashboardForm = () => {
           {renderCategories && <CategoriesPopup setVisibility={setRenderCategories}/>}
         </div>
 
-        <textarea
-          name='description'
-          placeholder="Description"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.description} />
+        <div className="input__group input__group-textarea">
+          <textarea
+              id="textarea"
+              name='description'
+              placeholder="Description"
+              className="input__group-input"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.description} />
+          <label htmlFor="textarea">Description</label>
+        </div>
 
         <select className="dashboard__form-details-select">
           <option value="USD">USD ($)</option>

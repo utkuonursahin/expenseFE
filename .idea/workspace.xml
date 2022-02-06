@@ -3,16 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="f35b4cf2-0b4d-4cd0-8dea-02ce31992787" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/sprite.svg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/A-Side/A-Side.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/A-Side/A-Side.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/DashboardForm/DashboardForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardForm/DashboardForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DashboardNav/DashboardNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardNav/DashboardNav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ItemDetails/ItemDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ItemDetails/ItemDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Dashboard/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DashboardForm/Items/Items.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardForm/Items/Items.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/_abstracts.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/_abstracts.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/components/_buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/components/_buttons.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/components/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/components/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/components/item-details.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/components/item-details.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/components/_categories-popup.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/components/_categories-popup.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/components/_profile-settings.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/components/_profile-settings.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/layout/_dashboard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/layout/_dashboard.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +91,10 @@
       <workItem from="1643996293445" duration="2854000" />
       <workItem from="1644005416614" duration="91000" />
       <workItem from="1644069299302" duration="595000" />
-      <workItem from="1644074493464" duration="11105000" />
+      <workItem from="1644074493464" duration="11195000" />
+      <workItem from="1644142967504" duration="162000" />
+      <workItem from="1644149724955" duration="4049000" />
+      <workItem from="1644154461998" duration="4391000" />
     </task>
     <servers />
   </component>
