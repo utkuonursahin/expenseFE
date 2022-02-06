@@ -112,15 +112,19 @@ const DashboardForm = () => {
     <form className={`dashboard__form ${!isFormClicked ? 'hidden-form' : ""}`} onSubmit={formik.handleSubmit}>
       <div className="dashboard__form-details">
         <h4 className="heading-4" >Expense Details</h4>
-        <input
-          name='title'
-          type="text"
-          placeholder="Title"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.title}
-          className={`${formik.touched.title && formik.errors.title ? "error" : ""}`}
-        />
+
+        <div className="input__group">
+          <input
+            name='title'
+            type="text"
+            placeholder="Title"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.title}
+            className={`input__group-input ${formik.touched.title && formik.errors.title ? "error" : ""}`}
+          />
+          <label htmlFor="title">Title</label>
+        </div>
 
         <div className="dashboard__form-details-categories"   >
           <button type="button" name="category" onBlur={() => { formik.setFieldTouched("category", true); !currentCategory && formik.setFieldError("category", "category is a required field") }} className={`btn btn-categories-form ${formik.touched.category && formik.errors.category ? "error" : ""}`} onClick={() => setRenderCategories(prev => !prev)}>
@@ -132,13 +136,17 @@ const DashboardForm = () => {
           {renderCategories && <CategoriesPopup setVisibility={setRenderCategories} />}
         </div>
 
-        <textarea
-          name='description'
-          placeholder="Description"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.description}
-          className={`${formik.touched.description && formik.errors.description ? "error" : ""}`} />
+        <div className="input__group input__group-textarea">
+          <textarea
+            name='description'
+            placeholder="Description"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.description}
+            className={`input__group-input ${formik.touched.description && formik.errors.description ? "error" : ""}`} />
+          <label htmlFor="textarea">Description</label>
+        </div>
+
 
         <select name="currency" value={formik.values.currency} className={`dashboard__form-details-select ${formik.touched.currency && formik.errors.currency ? "error" : ""}`}
           onClick={formik.handleChange}
@@ -151,7 +159,7 @@ const DashboardForm = () => {
           <option value="TRY">TRY (₺)</option>
         </select>
 
-      </div>
+      </div >
 
       <div className="dashboard__form-date">
         <h4 className="heading-4">Expense Date</h4>
@@ -185,7 +193,7 @@ const DashboardForm = () => {
         <button type='button' className="btn btn-close-form" onClick={() => { setCurrentCategory(null); setIsFormClicked(!isFormClicked) }}>Close Form</button>
       </div>
 
-    </form>
+    </form >
   );
 };
 export default DashboardForm;

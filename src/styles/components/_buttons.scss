@@ -58,7 +58,9 @@
 .btn-categories-form{
   width: 100%;
   justify-content: center;
-  background-color: abs.$color-white;
+  background-color: abs.$color-darkblue;
+  color: abs.$color-white-gray;
+  border: solid .1rem abs.$color-purple--light;
 }
 
 .btn-create-expense, .btn-add-item{
@@ -156,4 +158,28 @@
 .btn-delete{
   background-color: abs.$color-red;
   color: abs.$color-white;
+}
+
+.btn-logout{
+  text-transform: uppercase;
+  background-color: transparent;
+  color: abs.$color-white;
+}
+
+.btn-profile{
+  padding: 1rem 2rem;
+  background-color: transparent;
+  text-transform: uppercase;
+  & a{
+    text-decoration: none;
+    color: abs.$color-purple;
+  }
+}
+
+.btn-profile, .btn-logout{
+  font-size: 1.5rem;
+  letter-spacing: 1.4px;
+  @media only screen and (max-width: abs.$bp-large){
+    display: none;
+  }
 }
