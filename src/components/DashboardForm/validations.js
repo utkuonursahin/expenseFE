@@ -8,10 +8,6 @@ const validations = yup.object().shape({
     description: yup
         .string()
         .min(2),
-    category: yup
-        .string()
-        .min(2)
-        .required(),
     expense_date: yup
         .date()
     ,

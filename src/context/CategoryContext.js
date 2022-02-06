@@ -5,6 +5,7 @@ const CategoryContext = createContext()
 
 const CategoryProvider = ({ children }) => {
     const [categories, setCategories] = useState([])
+    const [currentCategory, setCurrentCategory] = useState(null)
 
     useEffect(() => {
         (async () => {
@@ -18,8 +19,7 @@ const CategoryProvider = ({ children }) => {
             }
         })()
     }, [])
-
-    const values = { categories, setCategories }
+    const values = { categories, setCategories, currentCategory, setCurrentCategory }
     return <CategoryContext.Provider value={values}>{children}</CategoryContext.Provider>
 }
 const useCategory = () => useContext(CategoryContext)

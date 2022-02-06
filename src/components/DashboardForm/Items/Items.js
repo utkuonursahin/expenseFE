@@ -3,8 +3,8 @@ import { toast } from 'react-toastify';
 const Items = ({ items, index, setItems, onChange, onBlur, values, i, setFieldValue }) => {
   const handleDelete = () => {
     if (items.length > 1) {
-      setItems(items.filter(el => el !== index))
-      setFieldValue('items', values.filter(el => el.name !== values[i].name));
+      setItems(items.filter(el => el._id !== index))
+      setFieldValue('items', values.filter(el => el.name !== values[i]?.name));
     } else {
       toast.error('You can not delete last item', {
         position: "bottom-right",
