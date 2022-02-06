@@ -28,14 +28,14 @@ const Items = ({ items, index, setItems, i, formik }) => {
       </div>
 
       <div className="input__group">
-        <input name={`items.${i}.price`} type="number" className={`input__group-inpu${formik?.touched?.items?.[i]?.price && formik?.errors?.items?.[i]?.price ? "error" : ""}`} placeholder="Price" value={formik.values.items[i].price} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+        <input name={`items.${i}.price`} type="number" className={`input__group-input ${formik?.touched?.items?.[i]?.price && formik?.errors?.items?.[i]?.price ? "error" : ""}`} placeholder="Price" value={formik.values.items[i].price} onChange={formik.handleChange} onBlur={formik.handleBlur} />
         <label htmlFor="price">Price</label>
       </div>
 
       <div className="input__group">
-        <input name={`items.${i}.quantity`} type="number" className={`input__group-input${formik?.touched?.items?.[i]?.quantity && formik?.errors?.items?.[i]?.quantity ? "error" : ""}`} placeholder="Qty" value={formik.values.items[i].quantity} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+        <input name={`items.${i}.quantity`} type="number" className={`input__group-input ${formik?.touched?.items?.[i]?.quantity && formik?.errors?.items?.[i]?.quantity ? "error" : ""}`} placeholder="Qty" value={formik.values.items[i].quantity} onChange={formik.handleChange} onBlur={formik.handleBlur} />
 
-        <label id="quantity" htmlFor="quantity">Quantity</label>
+        <label id="quantity" htmlFor="quantity">QTY.</label>
       </div>
 
       <svg onClick={handleDelete}>

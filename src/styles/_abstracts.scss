@@ -40,13 +40,13 @@ $bp-small: 26.25em; //420px
 }
 
 .error{
-  animation: borderAnimation 1s infinite;
+  animation: borderAnimation 2s infinite;
 }
 @keyframes borderAnimation {
   0%{
-    box-shadow: 0 0 0 .25rem #ff1c1c;
+    border: 2px solid #ff1c1c;
   }
   100%{
-    box-shadow: 0 0 0 .25rem #a32020;
+    border: 2px solid #a32020;
   }
 }
