@@ -3,12 +3,11 @@ import DashboardNav from "../../components/DashboardNav/DashboardNav";
 import DashboardList from "../../components/DashboardList/DashboardList";
 import DashboardForm from "../../components/DashboardForm/DashboardForm";
 import Overlay from "../../components/Overlay/Overlay";
-import { useEffect } from 'react';
+import {useEffect, useState} from 'react';
 import { useExpenses } from '../../context/ExpensesContext';
 
 const Dashboard = () => {
   const { isFormClicked, refreshExpenses } = useExpenses()
-
   useEffect(() => {
     refreshExpenses();
   }, [])
@@ -17,12 +16,13 @@ const Dashboard = () => {
       <ASide />
       <DashboardNav />
       <DashboardList />
-      {isFormClicked && (
+      {/*{isFormClicked && (
         <>
-          <DashboardForm />
-          <Overlay />
+
         </>
-      )}
+      )}*/}
+      <DashboardForm />
+      <Overlay />
     </section>
   );
 };

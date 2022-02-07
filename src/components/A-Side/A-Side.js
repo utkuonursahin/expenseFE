@@ -1,18 +1,22 @@
 import { Link, useNavigate } from "react-router-dom";
+import {useState} from "react";
+import ProfileSettings from "../ProfileSettings/ProfileSettings";
 
 const ASide = () => {
   const navigate = useNavigate();
+  const [isProfileClicked, setIsProfileClicked] = useState(false)
   return (
-    <nav aria-label="primary navigation" className="dashboard__aside">
-      <svg className="dashboard__aside--logo">
+    <nav aria-label="primary navigation" className="aside">
+      <svg className="aside--logo">
         <use href="./assets/sprite.svg#icon-logo" />
       </svg>
-      <span className="dashboard__aside--horizontal" />
-      <button className="btn btn-profile"><Link to="/profile">Profile</Link></button>
+      <span className="aside--horizontal" />
+      <button className="btn btn-link"><Link to="/profile">Profile</Link></button>
+      <button className="btn btn-link"><Link to="/dashboard">Dashboard</Link></button>
       <button className="btn btn-logout" onClick={() => { localStorage.removeItem("user"); navigate("/") }}>Logout</button>
       <img src="./assets/image-avatar.jpg" alt="Profile avatar"
-        className="dashboard__aside--profile-link"
-      />
+        className="aside--profile-link" onClick={() => setIsProfileClicked(!isProfileClicked)}/>
+      <ProfileSettings isProfileClicked={isProfileClicked} setIsProfileClicked={setIsProfileClicked}/>
     </nav>
   );
 };

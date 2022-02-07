@@ -40,6 +40,7 @@
   height: 5rem;
   gap: 1rem;
   font-size: 1.6rem;
+  text-transform: capitalize;
   & svg{
     transform: rotate(180deg);
     width: 2rem;
@@ -166,7 +167,7 @@
   color: abs.$color-white;
 }
 
-.btn-profile{
+.btn-link{
   padding: 1rem 2rem;
   background-color: transparent;
   text-transform: uppercase;
@@ -174,9 +175,12 @@
     text-decoration: none;
     color: abs.$color-purple;
   }
+  @media only screen and (max-width: abs.$bp-large){
+    padding: 0;
+  }
 }
 
-.btn-profile, .btn-logout{
+.btn-link,.btn-logout{
   font-size: 1.5rem;
   letter-spacing: 1.4px;
   @media only screen and (max-width: abs.$bp-large){

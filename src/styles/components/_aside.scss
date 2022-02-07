@@ -1,0 +1,46 @@
+@use "../abstracts" as abs;
+.aside {
+  z-index:3;
+  grid-column: aside-start / aside-end;
+  grid-row: 1 / -1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: abs.$color-darkblue;
+  border-radius: 0 3.5rem 3.5rem 0;
+  @media only screen and (max-width: abs.$bp-large){
+    grid-column: 1 / -1;
+    grid-row: aside-start / aside-end;
+    width: 100%;
+    flex-direction: row;
+    border-radius: 0 0 3.5rem 3.5rem;
+    align-items: center;
+  }
+  &--logo{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 8rem;
+    padding: 2rem 1rem;
+    border-radius: 0 3.5rem 0 0;
+    background-color: abs.$color-purple;
+    @media only screen and (max-width: abs.$bp-large){
+      height: 100%;
+      width: 8rem;
+      border-radius: 0 0 0 3.5rem;
+    }
+  }
+  & .btn-link:nth-of-type(1){margin-top: auto;}
+  & .btn-logout{margin-bottom: 2.5rem; margin-top: 1rem;}
+  &--profile-link{
+    height: 6rem;
+    margin-bottom: 2.5rem;
+    border-radius: 5rem;
+    @media only screen and (max-width: abs.$bp-large){
+      height: 4rem;
+      margin: 0 2.5rem 0 auto;
+    }
+  }
+}
