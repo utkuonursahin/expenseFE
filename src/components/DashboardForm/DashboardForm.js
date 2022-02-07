@@ -16,8 +16,6 @@ const DashboardForm = () => {
   const [items, setItems] = useState([{ _id: random() }]);
   const [renderCategories, setRenderCategories] = useState(false)
 
-
-
   const formik = useFormik({
     initialValues: {
       title: detailsExpense?.title || '',
@@ -50,6 +48,7 @@ const DashboardForm = () => {
           await updateExpense(detailsExpense._id, values);
           await refreshExpenses();
           setIsFormClicked(!isFormClicked)
+          formik.resetForm({})
           toast.success('Expense updated successfully', {
             position: "bottom-right",
             autoClose: 3000,
@@ -64,6 +63,7 @@ const DashboardForm = () => {
           await createExpense(values);
           await refreshExpenses();
           setIsFormClicked(!isFormClicked)
+          formik.resetForm({})
           toast.success('Expense created successfully', {
             position: "bottom-right",
             autoClose: 3000,
@@ -99,14 +99,13 @@ const DashboardForm = () => {
 
   useEffect(() => {
     if (detailsExpense)
-      setItems(formik.initialValues.items);
-  }, [])
+      setItems(detailsExpense.items);
+  }, [detailsExpense])
 
   useEffect(() => {
     if (!renderCategories && currentCategory)
       formik.setFieldValue("category", currentCategory._id);
   }, [renderCategories])
-
 
   return (
     <form className={`dashboard__form ${!isFormClicked ? 'hidden-form' : ""}`} onSubmit={formik.handleSubmit}>
@@ -179,7 +178,7 @@ const DashboardForm = () => {
         <h4 className="heading-4">Expense Items</h4>
         <button type='button' className="btn btn-add-item" onClick={handleAddItem}>Add item</button>
         <div className="dashboard__form-items-container">
-          {items.map((index, i) => (<Items
+          {items && items.map((index, i) => (<Items
             key={index._id}
             items={items}
             i={i}

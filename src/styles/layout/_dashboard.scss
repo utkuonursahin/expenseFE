@@ -1,6 +1,7 @@
 @use "../abstracts" as abs;
 .dashboard{
   position: relative;
+  height: 100%;
   min-height: 100vh;
   display: grid;
   grid-template-columns: [aside-start] 12rem [aside-end] minmax(5vw,3.5rem) [items-start] 1fr [items-end] minmax(5vw,3.5rem);

@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import Profile from "./pages/Profile/Profile";
@@ -23,14 +22,13 @@ function App() {
       />
       <BrowserRouter>
         <Routes>
+          <Route path="/" exact element={<ProtectedRoute />}>
+            <Route path="/" element={<Dashboard />} />
+          </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/" element={<Home />} />
           <Route path="/" element={<ProtectedRoute />}>
             <Route path="/profile" element={<Profile />} />
-          </Route>
-          <Route path="/" element={<ProtectedRoute />}>
-            <Route path="/dashboard" element={<Dashboard />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

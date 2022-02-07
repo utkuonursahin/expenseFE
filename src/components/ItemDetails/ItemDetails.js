@@ -43,6 +43,9 @@ const ItemDetails = ({ detailedExpense, setIsDetailsClicked }) => {
       return acc + (item.price * item.quantity);
     }, 0);
   }
+  const formatPrice = (price) => {
+    return parseInt(price).toLocaleString('tr-TR', { style: 'currency', currency: detailedExpense.currency })
+  }
   return (
     <div className="item-details">
 
@@ -78,20 +81,20 @@ const ItemDetails = ({ detailedExpense, setIsDetailsClicked }) => {
           return (
             <ul className="item-details__items-list" key={el._id}>
               <li className="item-details__items-list--item">{el.name}</li>
-              <li className="item-details__items-list--item">{el.price}</li>
               <li className="item-details__items-list--item">{el.quantity}</li>
-              <li className="item-details__items-list--item">{el.quantity * el.price}</li>
+              <li className="item-details__items-list--item">{formatPrice(el.price)}</li>
+              <li className="item-details__items-list--item">{formatPrice(el.quantity * el.price)}</li>
             </ul>)
         }
         )}
         <div className="item-details__items-total">
           <span>Total Price</span>
-          <span>{totalPrice()}</span>
+          <span>{formatPrice(totalPrice())}</span>
         </div>
       </div>
 
       <div className="item-details__buttons">
-        <button className="btn btn-edit" onClick={() => { setDetailsExpense(detailedExpense); setCurrentCategory(detailedExpense.category); setIsFormClicked(true) }}>Edit</button>
+        <button className="btn btn-edit" onClick={() => { setDetailsExpense(detailedExpense); setCurrentCategory(detailedExpense.category); setIsDetailsClicked(false); setIsFormClicked(true) }}>Edit</button>
         <button className="btn btn-delete" onClick={handleDelete}>Delete</button>
       </div>
       <svg onClick={() => { setDetailsExpense(null); setIsDetailsClicked(false) }}>

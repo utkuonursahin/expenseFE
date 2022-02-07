@@ -9,10 +9,10 @@ const ExpensesProvider = ({ children }) => {
   const [detailsExpense, setDetailsExpense] = useState(null)
 
 
-  const refreshExpenses = async () => {
+  const refreshExpenses = async (page, limit) => {
     if (localStorage.getItem("user")) {
       try {
-        const fetchExpenses = await getUserExpenses();
+        const fetchExpenses = await getUserExpenses({ page, limit });
         setExpenses(fetchExpenses)
       } catch (e) {
         console.log(e.response.data);

@@ -17,8 +17,8 @@ export const getUserList = async () => {
     const { data } = await axios.get("/users");
     return data;
 }
-export const getUserExpenses = async () => {
-    const { data } = await axios.get(`/users/expenses`);
+export const getUserExpenses = async (filter) => {
+    const { data } = await axios.get(`/users/expenses?page=${filter?.page || ""}&limit=${filter?.limit || ""}&category=${filter?.category || ""}&title=${filter?.title || ""}&description=${filter?.description || ""}&expense_date=${filter?.expense_date || ""}`);
     return data;
 }
 export const createUser = async (user) => {

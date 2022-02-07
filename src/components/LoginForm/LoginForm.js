@@ -19,7 +19,7 @@ const LoginForm = () => {
       try {
         const user = await userLogin(values);
         login(user);
-        navigate('/dashboard')
+        navigate('/')
       } catch (e) {
         toast.error(e.response.data.error, {
           position: "bottom-right",
@@ -57,7 +57,9 @@ const LoginForm = () => {
           className={`${formik.touched.password && formik.errors.password ? "error" : ""}`}
         />
         <button className="btn btn-login" disabled={formik.isSubmitting || !formik.isValid}>Log in</button>
-        <span><Link to="/">go back</Link></span>
+        <span >Forget Password</span>
+        <div style={{ "width": "100%", "height": "1px", "background": "#eee" }}></div>
+        <span style={{ "background": "purple", "width": "100%" }}><Link to="/sign-up">Sign Up</Link></span>
       </form>
     </>
   )
