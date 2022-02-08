@@ -1,5 +1,7 @@
 @use "../abstracts" as abs;
 .item-details{
+  max-height: 75%;
+  overflow-y: auto;
   position: absolute;
   z-index: 1;
   top: 50%;
@@ -15,6 +17,10 @@
   transform: translateY(-50%) translateX(calc(-50% - 5rem));
   background-color: abs.$color-darkblue;
   border-radius: .5rem;
+  &::-webkit-scrollbar {width: .75rem;}
+  &::-webkit-scrollbar-track {background: abs.$color-darkblue;  border-radius: 1rem;}
+  &::-webkit-scrollbar-thumb {background: abs.$color-purple--light; border-radius: 1rem;}
+  &::-webkit-scrollbar-thumb:hover {background: abs.$color-white-gray;}
   & svg{
     cursor: pointer;
     position: absolute;
@@ -64,7 +70,6 @@
   }
 
   &__items{
-    padding-top: 2rem;
     width: 100%;
     grid-column: details-start / details-end;
     display: grid;

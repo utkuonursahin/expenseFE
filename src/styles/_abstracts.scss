@@ -17,9 +17,10 @@ $bp-medium:31.25em; //500px
 $bp-small: 26.25em; //420px
 
 .hidden-form{
+  visibility: hidden;
   transform: translateX(-107.5vw);
   transition: all .5s ease-in-out;
-  @media only screen and (max-width: $bp-large){transform: translate(0,calc(-100%));}
+  @media only screen and (max-width: $bp-large){transform: translate(0,calc(-100vh - 7rem));}
 }
 
 .hidden-profile{

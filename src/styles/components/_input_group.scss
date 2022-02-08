@@ -1,0 +1,17 @@
+@use "../abstracts" as abs;
+.input__group{
+  position: relative;
+  & input + label, & textarea + label{
+    opacity: 1;
+    position: absolute;
+    top: -.5rem;
+    left: 1rem;
+    font-size: 1.3rem;
+    color: abs.$color-white-gray;
+    background-color: abs.$color-darkblue;
+    transition: all .25s ease-in-out;
+  }
+  & input:placeholder-shown + label, & textarea:placeholder-shown + label{opacity: 0;}
+  & input::-webkit-input-placeholder, & textarea::-webkit-input-placeholder{color: abs.$color-white-gray;}
+  &-textarea{grid-column: 1 / -1}
+}

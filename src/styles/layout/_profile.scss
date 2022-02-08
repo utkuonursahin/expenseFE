@@ -1,0 +1,53 @@
+@use "../abstracts" as abs;
+.profile{
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: [aside-start] 12rem [aside-end] minmax(5vw,3.5rem) [profile-start] 1fr [profile-end] minmax(5vw,3.5rem);
+  grid-template-rows: min-content 1fr;
+  grid-row-gap: 2.5rem;
+  align-items: center;
+  justify-items: center;
+  background-color: abs.$color-vulcan;
+  @media only screen and(max-width: abs.$bp-large){
+    grid-template-columns: 1fr;
+    grid-template-rows: [aside-start] 7rem [aside-end profile-start] 1fr [profile-end];
+  }
+
+  &__card{
+    grid-column: profile-start / profile-end ;
+    grid-row: 1 / -1;
+    padding: 8rem 12rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background-image: radial-gradient(abs.$color-purple--light, abs.$color-darkblue);
+    box-shadow: 0 0 .5rem .25rem abs.$color-darkblue;
+    @media only screen and(max-width: abs.$bp-large){
+      grid-column: 1 / -1;
+      padding: 4rem 6rem;
+    }
+    @media only screen and(max-width: abs.$bp-small){
+      grid-column: 1 / -1;
+      padding: 2rem 3rem;
+    }
+    & img{
+      height: 8rem;
+      width: 8rem;
+      border-radius: 8rem;
+    }
+    input{
+      height: 5rem;
+      border-radius: .5rem;
+      font-size: 1.6rem;
+      text-align: center;
+      color: abs.$color-white-gray;
+      background-color: abs.$color-darkblue;
+      border: solid .1rem abs.$color-purple--light;
+      outline: none;
+    }
+  }
+}

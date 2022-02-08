@@ -8,7 +8,6 @@ import { useExpenses } from '../../context/ExpensesContext';
 
 const Dashboard = () => {
   const { isFormClicked, refreshExpenses } = useExpenses()
-
   useEffect(() => {
     refreshExpenses();
   }, [])
