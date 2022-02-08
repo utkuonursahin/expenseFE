@@ -3,7 +3,7 @@ import DashboardNav from "../../components/DashboardNav/DashboardNav";
 import DashboardList from "../../components/DashboardList/DashboardList";
 import DashboardForm from "../../components/DashboardForm/DashboardForm";
 import Overlay from "../../components/Overlay/Overlay";
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useExpenses } from '../../context/ExpensesContext';
 
 const Dashboard = () => {
@@ -20,7 +20,7 @@ const Dashboard = () => {
         <> */}
       <DashboardForm />
       <Overlay />
-      {/* </> )}*/}
+      {/* </> )} */}
     </section>
   );
 };

@@ -73,7 +73,7 @@ const Profile = () => {
   return (
     <section onSubmit={formik.handleSubmit} className="profile">
       <ASide />
-      <form className="profile__card">
+      <form autoComplete='new-password' className="profile__card">
 
         <div className='avatar'>
           <img src={`http://18.192.215.189/uploads/users/${user.profile_image}`} alt="Profile pic" />
@@ -86,6 +86,7 @@ const Profile = () => {
             value={formik.values.first_name}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            autoComplete="off"
             className={`${formik.touched.first_name && formik.errors.first_name ? "error" : ""}`}
           />
           <label htmlFor="first_name">First Name</label>
@@ -95,6 +96,7 @@ const Profile = () => {
             value={formik.values.last_name}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            autoComplete="off"
             className={`${formik.touched.last_name && formik.errors.last_name ? "error" : ""}`} />
           <label htmlFor="last_name">Last name</label>
         </div>
@@ -104,6 +106,7 @@ const Profile = () => {
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            autoComplete="off"
             className={`${formik.touched.email && formik.errors.email ? "error" : ""}`} />
           <label htmlFor="email">E-mail</label>
         </div>
@@ -121,6 +124,7 @@ const Profile = () => {
               value={formik.password}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              autoComplete="off"
               className={`${formik.touched.password && formik.errors.password ? "error" : ""}`} />
             <label htmlFor="password">New Password</label>
           </div>
@@ -136,6 +140,7 @@ const Profile = () => {
               type="file"
               id="file"
               name="profile_image"
+              autoComplete="off"
               onChange={(e) => {
                 formik.setFieldValue("profile_image", e.target.files[0]);
                 setClickImage(false);

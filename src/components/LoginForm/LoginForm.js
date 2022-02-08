@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from '../../context/AuthContext';
-import { userLogin } from '../../api';
+import { resetPassword, userLogin } from '../../api';
 import { useFormik } from 'formik';
 import validationSchema from "./validations"
 import { toast } from 'react-toastify';
@@ -34,38 +34,74 @@ const LoginForm = () => {
       }
     }
   })
+  const handleSignUp = async () => {
+    if (!formik.values.email) {
+      return toast.error("Email is required", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+    try {
+      await resetPassword({ email: formik.values.email });
+      toast.success("Reset password link sent to your email", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } catch (e) {
+      toast.error(e.response.data.error, {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }
   return (
-    <>
-      <form onSubmit={formik.handleSubmit} className="login-form">
+    <form autoComplete='new-password' onSubmit={formik.handleSubmit} className="login-form">
+      <div className="input__group">
         <input
           name='email'
-          type="email"
+          type="text"
           placeholder="E-mail"
+          autoComplete="off"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
-          className={`${formik.touched.email && formik.errors.email ? "error" : ""}`}
+          className={`input__group-input ${formik.touched.email && formik.errors.email ? "error" : ""}`}
         />
-
+        <label htmlFor="title">E-mail</label>
+      </div>
+      <div className="input__group">
         <input
           name='password'
           type="password"
           placeholder="Password"
+          autoComplete="off"
+          onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
-          onChange={formik.handleChange}
-          className={`${formik.touched.password && formik.errors.password ? "error" : ""}`}
+          className={`input__group-input ${formik.touched.password && formik.errors.password ? "error" : ""}`}
         />
-        <button className="btn btn-login" disabled={formik.isSubmitting || !formik.isValid}>Log in</button>
-        <span >Forget Password</span>
-        <div style={{ "width": "100%", "height": "1px", "background": "#eee" }}></div>
-        <span style={{ "background": "purple", "width": "100%" }}><Link to="/sign-up">Sign Up</Link></span>
-      </form>
-    </>
+        <label htmlFor="title">Password</label>
+      </div>
+      <button className="btn btn-login" disabled={formik.isSubmitting || !formik.isValid}>Log in</button>
+      <span className='forget-password' onClick={handleSignUp}>Forget Password</span>
+      <span className='register'><Link to="/sign-up">Sign Up</Link></span>
+    </form>
   )
-
-
-
 };
 
 export default LoginForm;

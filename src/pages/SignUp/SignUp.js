@@ -14,7 +14,7 @@ const SignUp = () => {
 
   return (
     <div className="sign-up">
-      <h2 className="heading-2">Create your account, now!</h2>
+      <h2 className="heading-2" style={{ "textAlign": "center" }}>Create your account, now!</h2>
       <SignUpForm />
     </div>
   );
