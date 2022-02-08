@@ -37,8 +37,12 @@ export const changePassword = async (password) => {
     const { data } = await axios.post("/users/change-password", password);
     return data;
 }
-export const updateProfileImage = async (image) => {
-    const { data } = await axios.post("/users/update-profile-image", image);
+export const updateProfileImage = async (profile_image) => {
+    let uploadImage = new FormData();
+    uploadImage.append('profile_image', profile_image);
+    const { data } = await axios.post("/users/update-profile-image", uploadImage, {
+        'Content-Type': 'multipart/form-data'
+    });
     return data;
 }
 export const userUpdate = async (user) => {

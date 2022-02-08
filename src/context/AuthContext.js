@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { getUserList } from '../api';
 
 const AuthContext = createContext();
 
@@ -19,6 +20,13 @@ const AuthProvider = ({ children }) => {
         }
     }, [])
 
+    const updateStorage = async (id) => {
+        const users = await getUserList();
+        const updateUser = users.find(u => u._id === id);
+        setUser({ ...updateUser, tokens: user.tokens });
+        localStorage.setItem('user', JSON.stringify({ ...updateUser, tokens: user.tokens }));
+    }
+
     const login = (user) => {
         setLoggedIn(true);
         setUser(user);
@@ -38,7 +46,7 @@ const AuthProvider = ({ children }) => {
     }
 
 
-    const values = { user, loggedIn, loading, setLoading, login, logout };
+    const values = { user, loggedIn, loading, setLoading, login, logout, updateStorage };
     return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
 const useAuth = () => useContext(AuthContext);

@@ -24,30 +24,185 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    background-image: radial-gradient(abs.$color-purple--light, abs.$color-darkblue);
+    background-color: rgba(abs.$color-darkblue, .45);
     box-shadow: 0 0 .5rem .25rem abs.$color-darkblue;
+    position: relative;
     @media only screen and(max-width: abs.$bp-large){
       grid-column: 1 / -1;
       padding: 4rem 6rem;
     }
     @media only screen and(max-width: abs.$bp-small){
       grid-column: 1 / -1;
-      padding: 2rem 3rem;
+      padding: 5rem 3rem 3rem 3rem;
+      width: 80%;
     }
-    & img{
-      height: 8rem;
-      width: 8rem;
-      border-radius: 8rem;
+    .avatar {
+      position: absolute;
+      top: -4rem;  
+      img{
+        height: 8rem;
+        width: 8rem;
+        border-radius: 8rem;
+      }
+      span {
+        position: absolute;
+        top: 60%;
+        right: -.5rem;
+        border-radius: 50%;
+        display: block;
+        width: 3rem;
+        height: 3rem;
+        cursor: pointer;
+        background: abs.$color-purple;
+        transition: background .3s ease-out;
+        svg {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 1.8rem;
+          height: 1.8rem;
+          fill: abs.$color-white-gray;
+        }
+        &:hover {
+          background: abs.$color-white-gray;
+          svg {
+            fill: abs.$color-purple
+          }
+        }
+      }
     }
     input{
-      height: 5rem;
+      height: 4rem;
       border-radius: .5rem;
       font-size: 1.6rem;
       text-align: center;
       color: abs.$color-white-gray;
       background-color: abs.$color-darkblue;
-      border: solid .1rem abs.$color-purple--light;
+      border: solid .1rem abs.$color-darkblue;
       outline: none;
+      &:focus{
+        border-color: abs.$color-purple;
+      }
+    }
+    .input__group {
+      margin: .5rem 0;
+      label {
+        font-size: 1rem;
+      }
+    }
+    .container {
+      display:flex;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-direction: column;
+      color: abs.$color-white-gray;
+      font-size: 1.2rem;
+      width: 19rem;
+      margin-bottom: .5rem;
+      .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 5rem;
+        height: 2.5rem;
+        input[type="checkbox"] {
+          display: none;
+          &:checked + .switch::before {
+            transform: translateX(2.5rem);
+            background-color: abs.$color-darkblue;
+          }
+        }
+        .switch {
+          position: absolute;
+          cursor: pointer;
+          background-color: abs.$color-white-gray;
+          border-radius: 2.5rem;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          transition: background-color 0.2s ease;
+          &::before {
+            position: absolute;
+            content: "";
+            left: .2rem;
+            top: .2rem;
+            width: 2.1rem;
+            height: 2.1rem;
+            background-color: abs.$color-purple;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+          }
+        }
+      }
+    }
+    .btn-update-profile {
+      width: 100%;
+      height: 4rem;
+      background-color: abs.$color-purple;
+      color: abs.$color-white-gray;
+      transition: background-color .3s ease-in-out;
+      font-weight: 600;
+      font-size: 1.4rem;
+      &:hover {
+        background-color: abs.$color-white-gray;
+        color: abs.$color-purple;
+      }
+    }
+    .image-modal {
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      top: -7rem; left: -2rem; bottom: 0; right: 0;
+      background: rgba(abs.$color-darkblue, 1);
+      border-radius: 2rem;
+      width:calc(100% + 4rem);
+      height: calc(100% + 9rem);
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 10rem;
+      transition: all .3s ease-in-out;
+      svg:nth-child(1) {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 2rem;
+        height: 2rem;
+        fill: abs.$color-white-gray;
+        cursor: pointer;
+      }
+      svg:nth-child(2) {
+        width: 10rem;
+        height: 10rem;
+        fill: abs.$color-purple;
+      }
+      div {
+        label {
+          font-size: 2rem;
+          color: abs.$color-white-gray;
+          padding: 2rem 4rem;
+          border: 1px solid rgba(abs.$color-purple, .7);
+          border-radius: 1.5rem;
+          background: rgba(abs.$color-vulcan, .45);
+          transition: all .3s ease-in-out;
+          cursor: pointer;
+          &:hover {
+            color:  abs.$color-darkblue;
+            border: 1px solid rgba(abs.$color-purple, .7);
+            background: abs.$color-purple;
+          }
+        }
+        input {
+          display: none;
+        }
+      }
+    }
+    .active {
+      visibility: visible;
+      opacity: 1;
     }
   }
 }
