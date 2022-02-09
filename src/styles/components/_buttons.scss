@@ -58,6 +58,7 @@
 
 .btn-categories-form{
   width: 100%;
+  padding: 0 1rem;
   justify-content: center;
   background-color: abs.$color-darkblue;
   color: abs.$color-white-gray;
@@ -107,9 +108,10 @@
   &:hover{box-shadow: 0 0 .5rem .15rem abs.$color-purple--light;}
   &:active{transform: translateY(.2rem)}
   @media only screen and (max-width: abs.$bp-medium){
-    grid-row: 2 / 3;
-    grid-column: 1 / -1;
-    width: 100%;
+    flex-basis: 100%;
+    // grid-row: 2 / 3;
+    // grid-column: 1 / -1;
+    // width: 100%;
   }
 }
 
@@ -117,6 +119,7 @@
   font-size: 1.6rem;
   color: abs.$color-purple;
   background-color: transparent;
+  border: 1px solid abs.$color-purple;
   &:hover{
     background-color: abs.$color-darkblue;
   }
