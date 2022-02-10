@@ -3,7 +3,7 @@ import axios from "axios";
 axios.interceptors.request.use(
     config => {
 
-        config.baseURL = "http://18.192.215.189"
+        config.baseURL = "https://www.expendid.site"
         if (localStorage.getItem('user')) {
             config.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('user')).tokens.access_token}`;
         }

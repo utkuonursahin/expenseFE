@@ -19,7 +19,7 @@ const ASide = () => {
         <Link to="/" className={`${pathname === "/" ? "active" : ""}`}>Dashboard</Link>
         <button className="btn btn-logout" onClick={() => { localStorage.removeItem("user"); window.location.reload() }}>Logout</button>
       </div>
-      <img src={`http://18.192.215.189/uploads/users/${user.profile_image}`} alt="Profile avatar"
+      <img src={`https://www.expendid.site/uploads/users/${user.profile_image}`} alt="Profile avatar"
         className="aside--profile-link" onClick={() => setIsProfileClicked(!isProfileClicked)} />
       <ProfileSettings isProfileClicked={isProfileClicked} setIsProfileClicked={setIsProfileClicked} />
     </nav>

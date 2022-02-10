@@ -7,7 +7,7 @@ const ProfileSettings = ({ isProfileClicked, setIsProfileClicked }) => {
   const { pathname } = location
   return (
     <div className={`${!isProfileClicked ? 'hidden-profile' : ''} profile-settings `}>
-      <img src={`http://18.192.215.189/uploads/users/${user.profile_image}`} alt="Profile avatar" />
+      <img src={`https://www.expendid.site/uploads/users/${user.profile_image}`} alt="Profile avatar" />
       <ul>
         <li><Link to="/" className={`${pathname === "/" ? "active" : ""}`}>Dashboard</Link></li>
         <li><Link to="/profile" className={`${pathname === "/profile" ? "active" : ""}`}>Profile</Link></li>
