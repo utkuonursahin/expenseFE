@@ -33,6 +33,7 @@
       text-align: center;
       font-size: 1.2rem;
       color: abs.$color-white-gray;
+      cursor: pointer;
       &::after {
         display: inline-block;
         content: "";
