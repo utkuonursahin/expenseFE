@@ -5,11 +5,14 @@ import DashboardForm from "../../components/DashboardForm/DashboardForm";
 import Overlay from "../../components/Overlay/Overlay";
 import { useEffect } from 'react';
 import { useExpenses } from '../../context/ExpensesContext';
+import { useCategory } from '../../context/CategoryContext';
 
 const Dashboard = () => {
-  const { isFormClicked, refreshExpenses } = useExpenses()
+  const { refreshExpenses } = useExpenses()
+  const { fetchCategories } = useCategory();
   useEffect(() => {
     refreshExpenses();
+    fetchCategories();
   }, [])
   return (
     <section className="dashboard">

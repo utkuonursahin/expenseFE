@@ -4,6 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useFormik } from 'formik';
 import { changePassword, updateProfileImage, userUpdate } from '../../api';
 import { toast } from 'react-toastify';
+import validationSchema from "./validations"
 
 const Profile = () => {
   const [isToggled, setIsToggled] = useState(false);
@@ -11,20 +12,22 @@ const Profile = () => {
   const onToggle = () => setIsToggled(!isToggled);
   const { user, updateStorage } = useAuth();
 
+
+
   const formik = useFormik({
     initialValues: {
-      first_name: user.full_name.split(" ")[0],
-      last_name: user.full_name.split(" ")[1],
+      first_name: user.full_name.split(' ').slice(0, -1).join(' '),
+      last_name: user.full_name.split(' ').slice(-1).join(' '),
       email: user.email,
       password: '',
       profile_image: user.profile_image
     },
     enableReinitialize: true,
-    // validationSchema,
+    validationSchema,
     onSubmit: async (values, bag) => {
       try {
         if (values.first_name !== user.full_name.split("")[0] || values.last_name !== user.full_name.split(" ")[1] || values.email !== user.email) {
-          await userUpdate({ full_name: `${values.first_name.replaceAll(" ", "")} ${values.last_name.replaceAll(" ", "")}`, email: values.email })
+          await userUpdate({ full_name: `${values.first_name.trim()} ${values.last_name.trim()}`, email: values.email })
         }
         if (values.password) {
           await changePassword({ password: values.password, confirm_password: values.password })
@@ -92,7 +95,7 @@ const Profile = () => {
           <label htmlFor="first_name">First Name</label>
         </div>
         <div className="input__group">
-          <input id='last_name' pattern="[A-Za-z0-9]{1,20}" name='last_name' type="text" placeholder="Last name"
+          <input id='last_name' name='last_name' type="text" placeholder="Last name"
             value={formik.values.last_name}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
