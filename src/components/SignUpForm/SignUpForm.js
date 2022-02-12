@@ -58,46 +58,72 @@ const SignUpForm = () => {
     }
   })
   return (
-    <form onSubmit={formik.handleSubmit} className="sign-up-form">
-
-      <label htmlFor="firstName">
-        <span>First Name: </span>
-        <input name="firstName" type="text" id="firstName" onChange={formik.handleChange}
+    <form autoComplete="new-password" onSubmit={formik.handleSubmit} className="sign-up-form">
+      <div className="input__group">
+        <input
+          name='firstName'
+          type="text"
+          placeholder="First Name"
+          onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.firstName}
-          className={`${formik.touched.firstName && formik.errors.firstName ? "error" : ""}`} />
-      </label>
-      <label htmlFor="lastName">
-        <span>Last Name: </span>
-        <input name="lastName" type="text" id="lastName" onChange={formik.handleChange}
+          autoComplete="off"
+          className={`input__group-input ${formik.touched.firstName && formik.errors.firstName ? "error" : ""}`}
+        />
+        <label htmlFor="title">First Name</label>
+      </div>
+      <div className="input__group">
+        <input
+          name='lastName'
+          type="text"
+          placeholder="Last Name"
+          autoComplete="off"
+          onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.lastName}
-          className={`${formik.touched.lastName && formik.errors.lastName ? "error" : ""}`} />
-      </label>
-      <label htmlFor="email">
-        <span>E-mail: </span>
-        <input name="email" type="email" id="email" onChange={formik.handleChange}
+          className={`input__group-input ${formik.touched.lastName && formik.errors.lastName ? "error" : ""}`}
+        />
+        <label htmlFor="title">Last Name</label>
+      </div>
+      <div className="input__group">
+        <input
+          name='email'
+          type="email"
+          placeholder="E-mail"
+          autoComplete="off"
+          onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
-          className={`${formik.touched.email && formik.errors.email ? "error" : ""}`} />
-      </label>
-
-      <label htmlFor="password">
-        <span>Password: </span>
-        <input name="password" type="password" id="password" onChange={formik.handleChange}
+          className={`input__group-input ${formik.touched.email && formik.errors.email ? "error" : ""}`}
+        />
+        <label htmlFor="title">E-mail</label>
+      </div>
+      <div className="input__group">
+        <input
+          name='password'
+          type="password"
+          placeholder="Password"
+          autoComplete="off"
+          onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
-          className={`${formik.touched.password && formik.errors.password ? "error" : ""}`} />
-      </label>
-
-      <label htmlFor="confirmPassword">
-        <span>Confirm Password: </span>
-        <input name="confirmPassword" type="password" id="confirmPassword" onChange={formik.handleChange}
+          className={`input__group-input ${formik.touched.password && formik.errors.password ? "error" : ""}`}
+        />
+        <label htmlFor="title">Password</label>
+      </div>
+      <div className="input__group">
+        <input
+          name='confirmPassword'
+          type="password"
+          placeholder="Confirm Password"
+          autoComplete="off"
+          onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.confirmPassword}
-          className={`${formik.touched.confirmPassword && formik.errors.confirmPassword ? "error" : ""}`} />
-      </label>
-
+          className={`input__group-input ${formik.touched.confirmPassword && formik.errors.confirmPassword ? "error" : ""}`}
+        />
+        <label htmlFor="title">Confirm Password</label>
+      </div>
       <button className="btn btn-sign-up" disabled={formik.isSubmitting || !formik.isValid}>Sign Up!</button>
       <span><Link to="/">go back</Link></span>
     </form>

@@ -4,6 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useFormik } from 'formik';
 import { changePassword, updateProfileImage, userUpdate } from '../../api';
 import { toast } from 'react-toastify';
+import validationSchema from "./validations"
 
 const Profile = () => {
   const [isToggled, setIsToggled] = useState(false);
@@ -11,20 +12,22 @@ const Profile = () => {
   const onToggle = () => setIsToggled(!isToggled);
   const { user, updateStorage } = useAuth();
 
+
+
   const formik = useFormik({
     initialValues: {
-      first_name: user.full_name.split(" ")[0],
-      last_name: user.full_name.split(" ")[1],
+      first_name: user.full_name.split(' ').slice(0, -1).join(' '),
+      last_name: user.full_name.split(' ').slice(-1).join(' '),
       email: user.email,
       password: '',
       profile_image: user.profile_image
     },
     enableReinitialize: true,
-    // validationSchema,
+    validationSchema,
     onSubmit: async (values, bag) => {
       try {
         if (values.first_name !== user.full_name.split("")[0] || values.last_name !== user.full_name.split(" ")[1] || values.email !== user.email) {
-          await userUpdate({ full_name: `${values.first_name.replaceAll(" ", "")} ${values.last_name.replaceAll(" ", "")}`, email: values.email })
+          await userUpdate({ full_name: `${values.first_name.trim()} ${values.last_name.trim()}`, email: values.email })
         }
         if (values.password) {
           await changePassword({ password: values.password, confirm_password: values.password })
@@ -73,10 +76,10 @@ const Profile = () => {
   return (
     <section onSubmit={formik.handleSubmit} className="profile">
       <ASide />
-      <form className="profile__card">
+      <form autoComplete='new-password' className="profile__card">
 
         <div className='avatar'>
-          <img src={`http://18.192.215.189/uploads/users/${user.profile_image}`} alt="Profile pic" />
+          <img src={`https://www.expendid.site/uploads/users/${user.profile_image}`} alt="Profile pic" />
           <span onClick={() => setClickImage(true)}>
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none" /><path d="M21 6h-3.17L16 4h-6v2h5.12l1.83 2H21v12H5v-9H3v9c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM8 14c0 2.76 2.24 5 5 5s5-2.24 5-5-2.24-5-5-5-5 2.24-5 5zm5-3c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3zM5 6h3V4H5V1H3v3H0v2h3v3h2z" /></svg>
           </span>
@@ -86,15 +89,17 @@ const Profile = () => {
             value={formik.values.first_name}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            autoComplete="off"
             className={`${formik.touched.first_name && formik.errors.first_name ? "error" : ""}`}
           />
           <label htmlFor="first_name">First Name</label>
         </div>
         <div className="input__group">
-          <input id='last_name' pattern="[A-Za-z0-9]{1,20}" name='last_name' type="text" placeholder="Last name"
+          <input id='last_name' name='last_name' type="text" placeholder="Last name"
             value={formik.values.last_name}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            autoComplete="off"
             className={`${formik.touched.last_name && formik.errors.last_name ? "error" : ""}`} />
           <label htmlFor="last_name">Last name</label>
         </div>
@@ -104,6 +109,7 @@ const Profile = () => {
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            autoComplete="off"
             className={`${formik.touched.email && formik.errors.email ? "error" : ""}`} />
           <label htmlFor="email">E-mail</label>
         </div>
@@ -121,6 +127,7 @@ const Profile = () => {
               value={formik.password}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              autoComplete="off"
               className={`${formik.touched.password && formik.errors.password ? "error" : ""}`} />
             <label htmlFor="password">New Password</label>
           </div>
@@ -136,6 +143,7 @@ const Profile = () => {
               type="file"
               id="file"
               name="profile_image"
+              autoComplete="off"
               onChange={(e) => {
                 formik.setFieldValue("profile_image", e.target.files[0]);
                 setClickImage(false);

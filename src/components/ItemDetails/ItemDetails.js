@@ -77,16 +77,14 @@ const ItemDetails = ({ detailedExpense, setIsDetailsClicked }) => {
           <span>Total</span>
         </div>
 
-        {detailedExpense.items.map(el => {
-          return (
-            <ul className="item-details__items-list" key={el._id}>
-              <li className="item-details__items-list--item">{el.name}</li>
-              <li className="item-details__items-list--item">{el.quantity}</li>
-              <li className="item-details__items-list--item">{formatPrice(el.price)}</li>
-              <li className="item-details__items-list--item">{formatPrice(el.quantity * el.price)}</li>
-            </ul>)
+        {detailedExpense.items.map(el =>
+          <ul className="item-details__items-list" key={el._id}>
+            <li className="item-details__items-list--item">{el.name}</li>
+            <li className="item-details__items-list--item">{el.quantity}</li>
+            <li className="item-details__items-list--item">{formatPrice(el.price)}</li>
+            <li className="item-details__items-list--item">{formatPrice(el.quantity * el.price)}</li>
+          </ul>)
         }
-        )}
         <div className="item-details__items-total">
           <span>Total Price</span>
           <span>{formatPrice(totalPrice())}</span>

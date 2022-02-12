@@ -9,17 +9,20 @@ const CategoryProvider = ({ children }) => {
 
     useEffect(() => {
         (async () => {
-            if (localStorage.getItem("user")) {
-                try {
-                    const fetchCategories = await getCategories();
-                    setCategories(fetchCategories)
-                } catch (e) {
-                    console.log(e.response.data);
-                }
-            }
+            await fetchCategories();
         })()
     }, [])
-    const values = { categories, setCategories, currentCategory, setCurrentCategory }
+    const fetchCategories = async () => {
+        if (localStorage.getItem("user")) {
+            try {
+                const fetchCategories = await getCategories();
+                setCategories(fetchCategories)
+            } catch (e) {
+                console.log(e.response.data);
+            }
+        }
+    }
+    const values = { categories, setCategories, fetchCategories, currentCategory, setCurrentCategory }
     return <CategoryContext.Provider value={values}>{children}</CategoryContext.Provider>
 }
 const useCategory = () => useContext(CategoryContext)

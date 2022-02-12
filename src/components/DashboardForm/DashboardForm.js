@@ -108,7 +108,7 @@ const DashboardForm = () => {
   }, [renderCategories])
 
   return (
-    <form className={`dashboard__form ${!isFormClicked ? 'hidden-form' : ""}`} onSubmit={formik.handleSubmit}>
+    <form autoComplete='new-password' className={`dashboard__form ${!isFormClicked ? 'hidden-form' : ""}`} onSubmit={formik.handleSubmit}>
       <div className="dashboard__form-details">
         <h4 className="heading-4" >Expense Details</h4>
 
@@ -119,6 +119,7 @@ const DashboardForm = () => {
             placeholder="Title"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            autoComplete="off"
             value={formik.values.title}
             className={`input__group-input ${formik.touched.title && formik.errors.title ? "error" : ""}`}
           />
@@ -141,6 +142,7 @@ const DashboardForm = () => {
             placeholder="Description"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            autoComplete="off"
             value={formik.values.description}
             className={`input__group-input ${formik.touched.description && formik.errors.description ? "error" : ""}`} />
           <label htmlFor="textarea">Description</label>
@@ -150,7 +152,8 @@ const DashboardForm = () => {
         <select name="currency" value={formik.values.currency} className={`dashboard__form-details-select ${formik.touched.currency && formik.errors.currency ? "error" : ""}`}
           onClick={formik.handleChange}
           onChange={formik.handleChange}
-          onBlur={formik.handleBlur}>
+          onBlur={formik.handleBlur}
+          autoComplete="off">
 
           <option value="USD">USD ($)</option>
           <option value="EUR">EUR (€)</option>
@@ -170,6 +173,7 @@ const DashboardForm = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.expense_date}
+          autoComplete="off"
           className={`${formik.touched.expense_date && formik.errors.expense_date ? "error" : ""}`}
         />
       </div>

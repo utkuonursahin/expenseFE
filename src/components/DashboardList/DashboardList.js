@@ -1,4 +1,3 @@
-import moment from 'moment';
 import { useExpenses } from '../../context/ExpensesContext';
 import ItemDetails from "../ItemDetails/ItemDetails";
 import { useEffect, useState } from "react";
@@ -13,7 +12,7 @@ const DashboardList = () => {
   const [detailedExpense, setDetailedExpense] = useState()
   const [isDetailsClicked, setIsDetailsClicked] = useState(false)
   const [currentPage, setCurrentPage] = useState(1);
-  const [expensesPerPage] = useState(2);
+  const [expensesPerPage] = useState(5);
 
   // Get current posts
   const indexOfLastExpense = currentPage * expensesPerPage;
@@ -34,14 +33,14 @@ const DashboardList = () => {
 
   return (
     <div className="dashboard__list">
-      <ExpenseItem expenses={currentExpenses} setDetailedExpense={setDetailedExpense} setIsDetailsClicked={setIsDetailsClicked} />
-      {isDetailsClicked && <ItemDetails detailedExpense={detailedExpense} setIsDetailsClicked={setIsDetailsClicked} />}
       {expenses.length > expensesPerPage && (
         <Pagination postsPerPage={expensesPerPage}
           totalPosts={expenses.length}
           paginate={paginate}
           currentPage={currentPage} />
       )}
+      <ExpenseItem expenses={currentExpenses} setDetailedExpense={setDetailedExpense} setIsDetailsClicked={setIsDetailsClicked} />
+      {isDetailsClicked && <ItemDetails detailedExpense={detailedExpense} setIsDetailsClicked={setIsDetailsClicked} />}
     </div>
   );
 };

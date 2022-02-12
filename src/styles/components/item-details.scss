@@ -1,12 +1,14 @@
 @use "../abstracts" as abs;
 .item-details{
-  max-height: 75%;
   overflow-y: auto;
   position: absolute;
-  z-index: 1;
+  z-index: 35;
   top: 50%;
   left: calc(50% + 10rem);
-  min-width: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  width: 50%;
+  height: 75%;
   padding: 2.5rem 0;
   display: grid;
   grid-template-columns: 2.5rem [details-start] repeat(2,1fr) [details-end] 2.5rem;
@@ -17,6 +19,7 @@
   transform: translateY(-50%) translateX(calc(-50% - 5rem));
   background-color: abs.$color-darkblue;
   border-radius: .5rem;
+  box-shadow: rgba(abs.$color-purple, 0.2) 0px 0px 0px 2px inset, rgba(abs.$color-purple, .5) 0px 0px 0px 2px;
   &::-webkit-scrollbar {width: .75rem;}
   &::-webkit-scrollbar-track {background: abs.$color-darkblue;  border-radius: 1rem;}
   &::-webkit-scrollbar-thumb {background: abs.$color-purple--light; border-radius: 1rem;}
@@ -24,9 +27,9 @@
   & svg{
     cursor: pointer;
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 2.5rem;
+    top: 1.5em;
+    right: 1.5rem;
+    width: 2.5rem; 
     height: 2.5rem;
     fill: abs.$color-purple;
     &:hover{fill: abs.$color-white;}
@@ -47,7 +50,7 @@
     grid-template-columns: repeat(2,1fr);
     grid-template-rows: repeat(2,1fr);
     list-style: none;
-    grid-row-gap: 2rem;
+    grid-row-gap: 1.5rem;
     justify-items: center;
     @media only screen and(max-width: abs.$bp-small){
       grid-template-columns: 1fr;
@@ -59,9 +62,11 @@
       align-items: center;
       gap: 1rem;
       font-size: 1.4rem;
+      text-align: center;
       color: abs.$color-white;
       text-transform: capitalize;
       & span{
+        text-align: center;
         font-weight: abs.$font-bold;
         font-size: 1.6rem;
         text-align: center;
@@ -74,8 +79,10 @@
     grid-column: details-start / details-end;
     display: grid;
     grid-template-rows: min-content repeat(auto-fit,minmax(min-content,max-content) min-content);
-    grid-row-gap: 2.5rem;
+    grid-row-gap: 2rem;
     background-color: rgba(abs.$color-vulcan, .25);
+    border: 1px solid rgba(abs.$color-purple, .5);
+    @media only screen and(max-width: abs.$bp-large){width: 115%;}
     border-radius: 1rem;
     &-headings, &-list, &-total{
       display: grid;
@@ -83,11 +90,17 @@
       justify-items: center;
       font-size: 1.4rem;
       color: abs.$color-white;
+      gap: 1rem;
+    @media only screen and(max-width: abs.$bp-large){font-size: 1.2rem;}
     }
-    &-headings{font-weight: abs.$font-bold}
-    &-list{list-style: none;}
+    &-headings{padding: 1rem 1rem 0 1rem;font-weight: abs.$font-bold}
+    &-list{
+      width: 100%;
+      padding: 1rem 0;
+      list-style: none;
+    }
     &-total{
-      padding: 2rem 0;
+      padding: 2rem 1rem;
       background-color: abs.$color-purple;
       border-radius: 0 0 1rem 1rem;
       font-weight: abs.$font-bold;

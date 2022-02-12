@@ -1,5 +1,4 @@
 import moment from 'moment';
-import React, { useState } from 'react';
 
 function ExpenseItem({ expenses, setIsDetailsClicked, setDetailedExpense }) {
 
@@ -17,10 +16,12 @@ function ExpenseItem({ expenses, setIsDetailsClicked, setDetailedExpense }) {
     return <ul className="dashboard__list-items">
         {expenses.map(expense => (
             <li key={expense._id} className="dashboard__list-items-item">
-                <span>{moment(expense.expense_date).format('ll')}</span>
-                <span>{expense.title}</span>
-                <span className="dashboard__list-items-item-category" >{expense.category.title}</span>
-                <span>{totalPrice(expense)}</span>
+                <div>
+                    <span>{moment(expense.expense_date).format('ll')}</span>
+                    <span>{expense.title}</span>
+                    <span className="dashboard__list-items-item-category" >{expense.category.title}</span>
+                    <span>{totalPrice(expense)}</span>
+                </div>
                 <button className="btn btn-show-more" onClick={() => handleClick(expense)}>Show more</button>
             </li>
         ))}
