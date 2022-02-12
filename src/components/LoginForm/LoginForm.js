@@ -99,7 +99,7 @@ const LoginForm = () => {
       </div>
       <button className="btn btn-login" disabled={formik.isSubmitting || !formik.isValid}>Log in</button>
       <span className='forget-password' onClick={handleSignUp}>Forget Password</span>
-      <span className='register'><Link to="/sign-up">Sign Up</Link></span>
+      <Link className="register" to="/sign-up"><span>Sign Up</span></Link>
     </form>
   )
 };
